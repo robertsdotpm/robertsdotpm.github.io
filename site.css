@@ -1,0 +1,354 @@
+ul, body
+{
+    margin: 0px;
+}
+
+body
+{
+    background: #0F1011;
+    overflow-x: hidden !important;
+    overflow-y: scroll;
+}
+
+.main-div
+{
+    padding-top: 40px;
+}
+
+.main-div, .nav-div
+{
+    background: #000000;
+    clear: both;
+    width: 1375px;
+}
+
+.nav-div
+{
+    height: 30px;
+    line-height: 26px;
+}
+
+.footer-div
+{
+    background: #333;
+    height: 50px;
+    line-height: 48px;
+    clear: both;
+    width: 1375px;
+    font-size: 21px;
+    color: #fff;
+}
+
+.footer-div a:link
+{
+    color: #fff;
+}
+
+.nav-div-wrapper
+{
+    width: 300px;
+    background: #333333;
+    height: 100%;
+}
+
+.link-spacer
+{
+    display: inline-block;
+    width: 35px;
+    color: #ccc;
+}
+
+table, .main-div
+{
+    color: #ffffff;
+}
+
+.about-blurb
+{
+    clear: both;
+    width: 1000px;
+    height: 265px;
+    font-size: 24px;
+    line-height: 33px;
+}
+
+.about-spacer
+{
+    height: 1px;
+    border-top: 1px solid #cccc;
+    width: 1180px;
+    margin-bottom: 20px;
+}
+
+.article_title
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.article_date
+{
+    margin: 0px;
+    position: relative;
+    left: -175px; /* -175 */
+    top: -37px; /* 37 */
+    color: #777;
+    width: 120px;
+    text-align: right;
+}
+
+.spacer
+{
+    overflow: hidden;
+    height: 10px;
+    clear: both;
+}
+
+.articles-list-table
+{
+    text-align: center;
+    width: 1370px;
+}
+
+.articles-list-table td
+{
+    vertical-align: top;
+}
+
+.category-spacer
+{
+    overflow: hidden;
+    height: 65px;
+    clear: both;
+}
+
+.category-heading-regular
+{
+    color: #FFD700;
+}
+
+.category-heading-recent
+{
+    color: #ea0000;
+}
+
+.category-heading-regular, .category-heading-recent
+{
+    font-size: 30px;
+}
+
+.articles-list-div
+{
+    width: 530px;
+}
+
+.articles-list-table li
+{
+    text-align: left;
+    line-height: 33px;
+    font-size: 24px;
+}
+
+body a:link, body a:active, body a:visited, body a:hover
+{
+    text-decoration: underline;
+    color: white;
+}
+
+body a:hover
+{
+    color: #2de2e2;
+}
+
+.article_content
+{
+    width: 95%;
+    text-align: left;
+    padding-bottom: 20px;
+    font-family: "Times New Roman", Times, serif;
+}
+
+/* begin css to try make article formatting look less shitty. wew */
+
+/* make bold high contrast */
+.article_content b, .article_content strong
+{
+    color: #F58E44;
+    font-weight: normal;
+}
+
+/* i.e. regular text -- make it readable */
+.article_content p
+{
+    font-size: 28px;
+    line-height: 38px;
+    color: #fff !important;
+}
+
+.article_content td
+{
+    font-size: 28px;
+    line-height: 38px;
+    padding: 15px;
+}
+
+.article_content th
+{
+    font-size: 32px;
+    line-height: 42px;
+    padding: 5px;
+    color: #2de2e2;
+}
+
+.article_content table, .article_content th, .article_content td
+{
+    border: 1px solid white !important;
+}
+
+/* wrap text elements */
+pre, blockquote p
+{
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+li
+{
+    color: #fff !important;
+}
+
+/* make lists stand out */
+ol, ul, ol b, ol strong, ul b, ul strong, li::marker {
+    color: #2de2e2 !important;
+}
+
+/*
+li::marker
+{
+    font-size: 30px !important;
+}
+*/
+
+ol li, ul li
+{
+    padding-left: 5px;
+}
+
+
+/*
+#article_content ul li:first-letter, #article_content ol li:first-letter
+{
+    color: #ffffff !important;
+}
+*/
+
+.article_content ul, .article_content ol
+{
+    padding-left: 70px;
+    padding-right: 70px;
+    background: #1f1f1f;
+}
+
+.article_content blockquote
+{
+    margin: 0px;
+    padding-left: 40px;
+    padding-right: 20px;
+    background: #1f1f1f;
+}
+
+
+.article_content blockquote p
+{
+    padding-top: 8px;
+    padding-bottom: 13px;
+}
+
+
+.article_content blockquote strong, .article_content blockquote b
+{
+    color: #2de2e2 !important;
+    padding: 0px;
+    margin: 0px;
+}
+
+.article_content ul, .article_content ol
+{
+    padding-top: 15px;
+    padding-bottom: 0px;
+}
+
+.article_content ul p, .article_content ol p, .article_content ul, .article_content ol
+{
+    font-size: 27px;
+    line-height: 37px;
+    /* gray: #d7d7d7; magenta: #FF89FF; either change to cyan or remove? */
+}
+
+.article_content ul li, .article_content ol li
+{
+    padding-bottom: 15px;
+}
+
+/* make code stand out */
+.article_content pre
+{
+    padding-left: 43px;
+    padding-right: 43px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: #1f1f1f;
+}
+.article_content pre, .article_content code
+{
+    font-size: 21px;
+    line-height: 32px;
+    color: #55d155; /* dark red: d16357, light red: ed7363, cyan: #2de2e2, magenta: f42779*/
+    font-family: "Consolas", "courier new";
+    text-decoration: none;
+}
+
+/* make headings colored */
+.article_content h1, .article_content h2, .article_content h3, .article_content h4, .article_content h5, .article_content h1 a, .article_content h2 a, .article_content h3 a, .article_content h4 a, .article_content h5 a
+{
+    color: #FFD700 !important; 
+}
+
+/* adjust h1 size */
+.article_content h1
+{
+    font-size: 44px;
+}
+
+/* adjust h2 size */
+.article_content h2
+{
+    font-size: 38px;
+}
+
+/* adjust h3 size */
+.article_content h3
+{
+    font-size: 34px;
+}
+
+/* adjust h4 size */
+.article_content h4
+{
+    font-size: 30px;
+}
+
+/* adjust h5 size */
+.article_content h5
+{
+    font-size: 26px;
+}
+
+/* make article links more prominant */
+.article_content a:link, .article_content a:active, .article_content a:visited
+{
+    color: #f42779;
+}
