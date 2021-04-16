@@ -21,8 +21,8 @@ $categories = array(
 $articles = array(
     "most-recent" => array(), // Dynamically generated.
     "cryptography" => array(
-        "random_data_compression" => array(
-            "My adventures in random data compression", 1590973200
+        "rand" => array(
+            "An algorithm for random data compression", 1618532671
         ),
         "hashcash_for_proving_set_membership" => array(
             "Hashcash for proving set membership", 1585098000
