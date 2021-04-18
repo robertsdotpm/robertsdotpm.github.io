@@ -110,7 +110,7 @@ function load_page($p, $categories, $articles, $page_title)
     $bk1 = $bk1_base . $path;
     $bk2 = $bk2_base . $smart;
     $footer  = "<a href='$bk1'>Backup 1</a>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;";
-    $footer .= "<a href='$bk2'>Backup 2</a>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;";
+    //$footer .= "<a href='$bk2'>Backup 2</a>&nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;";
     if(strlen($date_str_s))
     {
         $footer .= "Published " . $date_str_s;

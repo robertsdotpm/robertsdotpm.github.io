@@ -1,5 +1,6 @@
 - Random data compression code at http://github.com/robertsdotpm/rand
-- Code and paper by Matthew Roberts <matthew@roberts.pm>
+- Code and paper by <matthew@roberts.pm>
+- Version 0.2.0
 
 # Introduction
 
@@ -12,11 +13,9 @@ What this means for the data compression problem is intuitively a solution is li
 1. If random data compression were possible you could compress any data infinitely down to a single bit.
 2. If compression maps big inputs to small outputs. The algorithm also can't map small inputs.
 
-Argument 1 is an example of 'reductio ad absurdum' or argument to absurdity [rational-wiki]. It can be refuted by saying that any solution needs to have a minimum input size -- after which outputs become larger than inputs. Argument 2 happens to be true and is a logical certainty. More specifically, it refers to something known as the 'pigeon hole' principle, and it means that no compression algorithm for random data can compress every possible input into a smaller size without collisions [counting-argument]. The implied conclusion here is often a non-sequitur though -- something that doesn't follow naturally from the premises.
+Argument 1 is an example of 'reductio ad absurdum' or argument to absurdity [rational-wiki]. It can be refuted by saying that any solution needs to have a minimum input size -- after which outputs become larger than inputs. While argument 2 is about data representation on the bit-level. It states that if there is N bits to store data, there must also be at least N bits worth of data to represent it -- meaning not all values can be compressed.
 
-People like to make argument 2 seem like a solution that doesn't work for every input isn't worth doing. In reality, if an algorithm only works for a small number of inputs it's still worth considering. Better yet -- why not attempt to detect collisions and see if there's a way to route around them? If one could do that collisions in the data format and the pigeon hole principle become irrelevant. The algorithm must still only compress when it needs to though -- leaving the 'pigeon holes' alone as much as possible. It so happens the algorithm in this paper maps values around an extended space.
-
-Through the rest of the paper, I will introduce my full algorithm.
+The algorithm in this paper avoids the problems with argument 2 by storing information in such a way that multiple values can share the same representation. If one were to try do this with only bits it wouldn't work. But the way this is accomplished is through a special cryptographic data structure called a golomb set. This data structure and much more will be introduced through the rest of the paper.
 
 # Golomb-trees
 
@@ -24,11 +23,11 @@ Through the rest of the paper, I will introduce my full algorithm.
 
 The algorithm builds on a remarkable data structure called a golomb-coded set (GCS) [gcs-info]. A GCS is kind of like a bloom filter in that it allows one to know with absolute certainty if an item is *not* in a set or if an item *may* be in a set. What makes a GCS special over a bloom filter is its size: a GCS is around 44% smaller than a bloom filter. It's so small in fact, that when you end up putting information inside the set the results practically resemble random data compression already -- that is -- if there were a way to retrieve the data!
 
-The focus of this paper is on designing an algorithm that can recover information from a GCS using highly compact, cryptographic puzzles. Such a scheme is lossless and has a modest compression ratio of 6.7% (6.7% smaller in size than the input size.) The algorithm is designed to operate on 1 KB buffers which are split into **484~ 17 bit words** and stored in the GCS together with their offset. 
+The focus of this paper is on designing an algorithm that can recover information from a GCS using highly compact, cryptographic puzzles. Such a scheme allows multiple values to be **'stored' inside a GCS in a super-position of values within the same amount of space.** Such a property makes it possible to avoid the problems that arise from trying to store a large amount of values in a small amount of space using binary directly [counting-argument]. The scheme is fully lossless, and has a modest compression ratio of 6.7% (6.7% smaller in size than the input size.) 
 
 https://github.com/robertsdotpm/rand/blob/master/utils.py -- see buf_to_chunks().
 
-Suppose one were to test the GCS for every possible 17 bit value prefixed by a given word offset. One would end up with a list of false positives based on the parameters chosen for the GCS accuracy (1024.) Among the list of **candidates** would always be an offset to the correct word you were looking for -- the word in the candidate set as seen in the GCS. Do this for every word and you'll have a list of **candidate lists** together with a list of **numbers for how many candidates are in each list.** You'll also have a list of the correct offsets, of course, which we'll call the **node list** for short.
+The algorithm is designed to operate on 1 KB buffers which are split into **484~ 17 bit words** and stored in the GCS together with their offset. Suppose one were to test the GCS for every possible 17 bit value prefixed by a given word offset. One would end up with a list of false positives based on the parameters chosen for the GCS accuracy (1024.) Among the list of **candidates** would always be an offset to the correct word you were looking for -- the word in the candidate set as seen in the GCS. Do this for every word and you'll have a list of **candidate lists** together with a list of **numbers for how many candidates are in each list.** You'll also have a list of the correct offsets, of course, which we'll call the **node list** for short.
 
 ![brute force](articles/rand/brute_force.png)
 
@@ -127,7 +126,7 @@ An integer starting at 0 is incremented each time the full 4-byte nonce range is
 
 To determine its value consider that the q set offset ends up pointing to a specific quad set. The quad set is converted to an edge hash list and the value of i being checked is passed to the nonce search algorithm. This algorithm generates a list of nonces with their heuristic data. If the best nonce and its heuristic data match the metadata then the correct value of i must have been found.
 
-The integer is a key way to solve the pigeon hole problem that arises from running out of mappings for values. Since the value of i is not saved in the data format, the inclusion of i allows each value to be mapped uniquely to a smaller size without taking up extra space in the data format.
+The integer is a key way to solve the problem that arises from running out of nonces to check. Since the value of i is not saved in the data format, the inclusion of i allows each q set to be used uniquely with its own nonce range without taking up extra space in the data format.
 
 Example code: not available yet.
 
@@ -189,7 +188,7 @@ Nevertheless, this algorithm should be enough to satisfy the random data compres
 
 [rational-wiki] https://rationalwiki.org/wiki/Reductio_ad_absurdum
 
-[counting-argument]  http://mattmahoney.net/dc/dce.html#:~:text=The%20counting%20argument%20applies%20to,it%20cannot%20be%20compressed%20again. 
+[counting-argument] http://mattmahoney.net/dc/dce.html#:~:text=The%20counting%20argument%20applies%20to,it%20cannot%20be%20compressed%20again. 
 
 [gcs-info] https://giovanni.bajo.it/post/47119962313/golomb-coded-sets-smaller-than-bloom-filters
 
