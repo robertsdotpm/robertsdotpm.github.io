@@ -24,6 +24,9 @@ $articles = array(
         "rand" => array(
             "An algorithm for random data compression", 1618532671
         ),
+        "random_data_compression" => array(
+            "Adventures in random data compression", 1585098000
+        ),
         "hashcash_for_proving_set_membership" => array(
             "Hashcash for proving set membership", 1585098000
         ),

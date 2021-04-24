@@ -1,6 +1,6 @@
 - Random data compression code at http://github.com/robertsdotpm/rand
 - Code and paper by <matthew@roberts.pm>
-- Version 0.2.0
+- Version 0.3.0
 
 # Introduction
 
@@ -23,11 +23,13 @@ The algorithm in this paper avoids the problems with argument 2 by storing infor
 
 The algorithm builds on a remarkable data structure called a golomb-coded set (GCS) [gcs-info]. A GCS is kind of like a bloom filter in that it allows one to know with absolute certainty if an item is *not* in a set or if an item *may* be in a set. What makes a GCS special over a bloom filter is its size: a GCS is around 44% smaller than a bloom filter. It's so small in fact, that when you end up putting information inside the set the results practically resemble random data compression already -- that is -- if there were a way to retrieve the data!
 
-The focus of this paper is on designing an algorithm that can recover information from a GCS using highly compact, cryptographic puzzles. Such a scheme allows multiple values to be **'stored' inside a GCS in a super-position of values within the same amount of space.** Such a property makes it possible to avoid the problems that arise from trying to store a large amount of values in a small amount of space using binary directly [counting-argument]. The scheme is fully lossless, and has a modest compression ratio of 6.7% (6.7% smaller in size than the input size.) 
+The focus of this paper is on designing an algorithm that can recover information from a GCS using highly compact, cryptographic puzzles. Such a scheme allows multiple values to be **'stored' inside a GCS in a super-position of values within the same amount of space.** Such a property makes it possible to avoid the problems that arise from trying to store a large amount of values in a small amount of space using binary directly [counting-argument]. The scheme is fully lossless and has a very modest compression saving of 0.68% (translates to a mere 7 bytes / 1024 KB saved.)
 
 https://github.com/robertsdotpm/rand/blob/master/utils.py -- see buf_to_chunks().
 
 The algorithm is designed to operate on 1 KB buffers which are split into **484~ 17 bit words** and stored in the GCS together with their offset. Suppose one were to test the GCS for every possible 17 bit value prefixed by a given word offset. One would end up with a list of false positives based on the parameters chosen for the GCS accuracy (1024.) Among the list of **candidates** would always be an offset to the correct word you were looking for -- the word in the candidate set as seen in the GCS. Do this for every word and you'll have a list of **candidate lists** together with a list of **numbers for how many candidates are in each list.** You'll also have a list of the correct offsets, of course, which we'll call the **node list** for short.
+
+To reduce the number of false positives by half, the algorithm makes use of a bit string that samples the first bit expected in each word hash that is 'added' to the GCS. The word hashes starting bit is compared to the bit string and skipped if it doesn't match. The amount of space to store this metadata versus the exponential rise in set size without it was found to be more favorable than resolving the problem by other means. Such a bit filtering string is part of the many elements that make this algorithm possible.
 
 ![brute force](articles/rand/brute_force.png)
 
