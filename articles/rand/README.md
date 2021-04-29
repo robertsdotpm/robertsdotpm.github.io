@@ -1,8 +1,8 @@
 - Random data compression code at http://github.com/robertsdotpm/rand
 - Code and paper by <matthew@roberts.pm>
-- Version 0.3.0
+- Version 0.5.0
 
-# Introduction
+# 1. Introduction
 
 I've been working on a method to compress random data and I think I may have something interesting to share now. I didn't expect to make much progress on this problem because I've been told it's impossible. But after dividing the problem into manageable pieces, I feel ready to share my solution with you all.
 
@@ -17,7 +17,7 @@ Argument 1 is an example of 'reductio ad absurdum' or argument to absurdity [rat
 
 The algorithm in this paper avoids the problems with argument 2 by storing information in such a way that multiple values can share the same representation. If one were to try do this with only bits it wouldn't work. But the way this is accomplished is through a special cryptographic data structure called a golomb set. This data structure and much more will be introduced through the rest of the paper.
 
-# Golomb-trees
+# 2. Golomb-trees
 
 **Throughout this paper I will be mentioning various parameters that come from nowhere. I will not attempt to explain these values other than to say they were painstakingly determined by trial and error.**
 
@@ -35,7 +35,7 @@ There isn't presently a way to encode the node list in a way that is addressable
 
 https://github.com/robertsdotpm/rand/blob/master/golomb_sets.py [gcs-parent-repo]
 
-# Culumlative proof-of-work
+# 3. Culumlative proof-of-work
 
 Rather than deal with a full list of node offsets the algorithm works with sets that contain four pairs.
 
@@ -72,7 +72,7 @@ https://github.com/robertsdotpm/rand/blob/master/shared_pow.py
 
 The cumulative proof-of-work algorithm or CPoW function determines what nonce to use by trying every nonce in a 4-byte range and sorting the nonces by output q set size. The filtered set size depends on the heuristic qualities that the nonce produces. A counter is also combined with the nonce due to the need to determine special qualities for the heuristics to be stored as metadata later on.
 
-# Heuristic filtering
+# 4. Heuristic filtering
 
 The heuristics algorithm is based on converting a q set into a tree and using heuristics gathered at an edge hash together with a nonce to decide on how to traverse the tree. The root starts at edge hash zero. For every value in edge zero, a heuristic is checked (as gathered during the nonce search phase.) If there is a positive match the next branch is 'opened and the process continues to the next heuristic. The algorithm moves back a branch if it fails a check or has run out of branches to try.
 
@@ -84,7 +84,7 @@ After running the heuristic algorithm, what remains is a result set no larger th
 
 https://github.com/robertsdotpm/rand/blob/master/ex_filter.py
 
-# Heuristic encoding
+# 5. Heuristic encoding
 
 For this solution to work, a huge amount of metadata still needs to be encoded. There is the four-byte nonce created for each of the 61 q sets and its associated list of heuristic information for each q set edge hash (nonce prefix counts.) All of this as raw data far exceeds the remaining space. Fortunately, there are fairly standard coding schemes that can be used to solve this problem.
 
@@ -120,7 +120,7 @@ The last 7 bits per q set are used to encode the absolute offset in the filtered
 
 ![file format](articles/rand/file_format.png)
 
-# Checksums and finding the perfect nonce
+# 6. Checksums and finding the perfect nonce
 
 An integer starting at 0 is incremented each time the full 4-byte nonce range is searched. This integer is NOT included in the final data format. That means that it will be up to the decoder to figure out what value to use. 
 
@@ -132,7 +132,7 @@ https://github.com/robertsdotpm/rand/blob/develop/compress.py -- compress functi
 
 ![no selection](articles/rand/no_selection.png)
 
-# Calculations
+# 7. Calculations
 
 When testing nonces the potential number of q sets is calculated at each edge hash to ensure the output set hasn't grown too large. The following calculations are used:
 
@@ -174,7 +174,20 @@ out = calc_set_growth(out, indep) # 256
 # This is how zero bit prefixes in CPoW battles entropy
 ```
 
-# Results
+# 8. Collision mitigation
+
+The overall algorithm is structured to progressively resolve the number of possible interpretations of data; From a massive set to a set with less than 128 possibilities, it acts as a filter. But if we operate from the assumption that collisions can still occur then it becomes necessary to detect collisions and route around them. One very cool feature of this algorithm is it allows for multiple pathways to the same data items. The shortest path might immediately run into a collision, but walking longer (with different metadata) means you still wind up at the same destination.
+
+The key to making this possible is the prefix count -- a simple incrementing counter that gets added to the filter counter and nonce search functions. The filter counter allows the 4 byte nonce space to be extended by prepending it before the nonce. The filter counter can be encoded into the metadata by using hmac(key=i, data=metadata). What this does is allows the correct value of i to be encoded into the metadata as a checksum. Once the data is decoded, it undergoes additional checks where find nonces are run, the nonce is checked, the heuristics are compared, and so on. This makes it harder for collisions to interfere.
+
+Most importantly, in the event where collisions from 0 to x result in success, it allows for another nonce to be easily chosen and its new prefix becomes part of the checksum even as the prefixes. This bias is a great way to lessen the impact of collisions increasing as the path length (or prefix count) goes up since the position is still part of the checksum. Other ideas for reducing collisions:
+
+- Can you encode information in edge hashes?
+- Maybe form a chain and then use that to recover 'links' with collisions in them?
+- This section is a work in progress
+- The cool part is the cryptography and this data structure make this all very flexible
+
+# 9. Results
 
 A proof for the algorithm would show that both the heuristics algorithm worked and the metadata could be encoded in the remaining space. In practice it is not necessary to run the full algorithm on a 1 KB buffer since success for a single q set would imply the overall approach works for all 61 q sets.
 
@@ -184,7 +197,7 @@ Some people may not be satisfied with these conclusions but I encourage them to 
 
 Nevertheless, this algorithm should be enough to satisfy the random data compression challenge -- though it would require a larger cluster to run in any reasonable amount of time. Not an issue for a typical university. But certainly an issue for individuals without access to larger clusters.
 
-# References
+# 10. References
 
 [rational-wiki] https://rationalwiki.org/wiki/Reductio_ad_absurdum
 
