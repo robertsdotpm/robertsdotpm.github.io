@@ -15,7 +15,7 @@ What this means for the data compression problem is intuitively a solution is li
 
 Argument 1 is an example of 'reductio ad absurdum' or argument to absurdity [rational-wiki]. It can be refuted by saying that any solution needs to have a minimum input size -- after which outputs become larger than inputs. While argument 2 is about data representation on the bit-level. It states that if there is N bits to store data, there must also be at least N bits worth of data to represent it -- meaning not all values can be compressed.
 
-The algorithm in this paper avoids the problems with argument 2 by storing information in such a way that collisions can be detected and routed around. If one were to try do this with only bits it wouldn't work. But the way this is accomplished is through a special cryptographic data structure called a golomb set. This data structure and much more will be introduced through the rest of the paper.
+The algorithm in this paper avoids the problems with argument 2 by storing information in such a way that collisions can be detected and routed around. If one were to try do this with only bits it wouldn't work. But the way this is accomplished is through a special cryptographic data structure called a golomb-coded set. This data structure and much more will be introduced through the rest of the paper.
 
 # 2. Golomb-trees
 
