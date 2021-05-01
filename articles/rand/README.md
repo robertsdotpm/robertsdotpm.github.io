@@ -1,6 +1,6 @@
 - Random data compression code at http://github.com/robertsdotpm/rand
 - Code and paper by <matthew@roberts.pm>
-- Version 0.5.1
+- Version 0.5.2
 
 # 1. Introduction
 
@@ -178,7 +178,7 @@ out = calc_set_growth(out, indep) # 256
 
 The overall algorithm is structured to progressively resolve the number of possible interpretations of data; From a massive set to a set with less than 128 possibilities, it acts as a filter. But if we operate from the assumption that collisions can still occur then it becomes necessary to detect collisions and route around them. One very cool feature of this algorithm is it allows for multiple pathways to the same data items. The shortest path might immediately run into a collision, but walking longer (with different metadata) means you still wind up at the same destination.
 
-The key to making this possible is the prefix count -- a simple incrementing counter that gets added to the filter counter and nonce search functions. The filter counter allows the 4 byte nonce space to be extended by prepending it before the nonce. The filter counter can be encoded into the metadata by using hmac(key=i, data=metadata). What this does is allows the correct value of i to be encoded into the metadata as a checksum. Once the data is decoded, it undergoes additional checks where find nonces are run, the nonce is checked, the heuristics are compared, and so on. This makes it harder for collisions to interfere.
+The key to making this possible is the prefix count -- a simple incrementing counter that gets added to the filter counter and nonce search functions. The filter counter allows the 4 byte nonce space to be extended by prepending it before the nonce. The filter counter can be encoded into the metadata by using either symmetric encryption or ideal a simple cipher. What this does is allows the correct value of i to be encoded into the metadata as a checksum. Once the data is decoded, it undergoes additional checks where find nonces are run, the nonce is checked, the heuristics are compared, and so on. This makes it harder for collisions to interfere.
 
 Most importantly, in the event where collisions from 0 to x result in success, it allows for another nonce to be easily chosen and its new prefix becomes part of the checksum even as the prefixes. This bias is a great way to lessen the impact of collisions increasing as the path length (or prefix count) goes up since the position is still part of the checksum. Other ideas for reducing collisions:
 
