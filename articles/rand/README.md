@@ -1,6 +1,8 @@
 - Random data compression code at http://github.com/robertsdotpm/rand
 - Code and paper by <matthew@roberts.pm>
-- Version 0.5.3
+- Version 0.5.4
+
+Note: The nonce encoding data scheme in this paper currently doesn't work as predicted by others people. I thought it would because I had code that showed results that it did but my code was buggy. The new scheme for this will use a partial hash. Will update paper when I have time.
 
 # 1. Introduction
 
@@ -57,7 +59,7 @@ To understand what happens next it's important to revisit proof-of-work (PoW) in
 
 As it stands, the relationship in Bitcoin is between an important number (the block header), and an unimportant garbage value (the nonce.) The individual numbers there don't matter as much as the result. It so happens that you could use this approach to relate a list of numbers [by a nonce] that you do care about.
 
-The mind-blowing part about using PoW in this way is that it can be used cumulatively, to form a chain of heuristic filters. The filters can then be used to recover a small list of q set candidates from among trillions of possibilities. Once you have that list you only need a 7 bit offset to address the correct q set. 
+The mind-blowing part about using PoW in this way is that it can be used cumulatively, to form a chain of heuristic filters. The filters can then be used to recover a small list of q set candidates from among trillions of possibilities. Once you have that list you only need a 7 bit offset to address the correct q set.
 
 https://github.com/robertsdotpm/rand/blob/master/shared_pow.py
 
@@ -98,7 +100,7 @@ What my sample of 'good' nonces looked like.
 
 When bias shows up for nonce lists (and in the real world it does), it can be fed to a compression algorithm and its size reduced. The approach taken for nonce compression is to use golomb-rice codes [golomb-rice]. Sort the nonces in ascending order and divide all the nonces by the smallest value. Store the quotient and remainders. Golomb-rice coding uses the average of all the numbers for the divisor. But the smallest number can also be used. Using this approach makes it possible to take a 4-byte nonce and store it as a 9-bit quotient + 9-bit remainder -- with an extra 4 bytes stored for the divisor.
 
-Overall you save around 13 bits per nonce, with 1 extra dedicated to storing the divisor. 
+Overall you save around 13 bits per nonce, with 1 extra dedicated to storing the divisor.
 
 **Bits 0 - 5 inclusive -- heuristic table a offset**
 
@@ -122,7 +124,7 @@ The last 7 bits per q set are used to encode the absolute offset in the filtered
 
 # 6. Checksums and finding the perfect nonce
 
-An integer starting at 0 is incremented each time the full 4-byte nonce range is searched. This integer is NOT included in the final data format. That means that it will be up to the decoder to figure out what value to use. 
+An integer starting at 0 is incremented each time the full 4-byte nonce range is searched. This integer is NOT included in the final data format. That means that it will be up to the decoder to figure out what value to use.
 
 To determine its value consider that the q set offset ends up pointing to a specific quad set. The quad set is converted to an edge hash list and the value of i being checked is passed to the nonce search algorithm. This algorithm generates a list of nonces with their heuristic data. If the best nonce and its heuristic data match the metadata then the correct value of i must have been found.
 
@@ -142,15 +144,15 @@ CHKSUM_BITS = 0 # No longer used for anything -- ignore this OwO
 CHUNK_SIZE_BITS = 17
 
 # The prefix_no refers to the number of zero bits at the
-# fixed, chained, and independent hashing expressions in the CPoW function. 
+# fixed, chained, and independent hashing expressions in the CPoW function.
 def calc_set_growth(set_total, prefix_no, chunk_size_bits=CHUNK_SIZE_BITS):
     chained_p = (1.0 / (2 ** prefix_no))
     bloom_positives = (2 ** chunk_size_bits) * (1.0 / PROB)
-    bloom_positives = bloom_positives * (1.0 / (2 ** CHKSUM_BITS)) 
+    bloom_positives = bloom_positives * (1.0 / (2 ** CHKSUM_BITS))
     edge_candidates = bloom_positives ** 2
     set_change = (set_total * edge_candidates) * chained_p
     return set_change
-    
+
 # Edge zero heuristics
 pre = 2
 chained = 1
@@ -201,7 +203,7 @@ Nevertheless, this algorithm should be enough to satisfy the random data compres
 
 [rational-wiki] https://rationalwiki.org/wiki/Reductio_ad_absurdum
 
-[counting-argument] http://mattmahoney.net/dc/dce.html#:~:text=The%20counting%20argument%20applies%20to,it%20cannot%20be%20compressed%20again. 
+[counting-argument] http://mattmahoney.net/dc/dce.html#:~:text=The%20counting%20argument%20applies%20to,it%20cannot%20be%20compressed%20again.
 
 [gcs-info] https://giovanni.bajo.it/post/47119962313/golomb-coded-sets-smaller-than-bloom-filters
 
@@ -214,4 +216,3 @@ Nevertheless, this algorithm should be enough to satisfy the random data compres
 [bitcoin] https://bitcoin.org/bitcoin.pdf
 
 [compression-challenge] https://marknelson.us/posts/2012/10/09/the-random-compression-challenge-turns-ten.html
-
