@@ -23,7 +23,7 @@ $articles = array(
     "most-recent" => array(), // Dynamically generated.
 	"software-engineering" => array(
 		"p2pd" => array(
-			"Improving async networking in Python and other langs", 1673701824
+			"Improving async networking in Python", 1673701824
 		),
 	),
 	
