@@ -9,6 +9,7 @@ $bk2_base = "https://robertsdotpm.svbtle.com/";
 // Display order
 $categories = array(
     "most-recent",
+	"software-engineering",
     "cryptography",
     "smart-contracts",
     "algorithmic-corporations",
@@ -20,6 +21,12 @@ $categories = array(
 // Article meta-data.
 $articles = array(
     "most-recent" => array(), // Dynamically generated.
+	"software-engineering" => array(
+		"p2pd" => array(
+			"Improving async networking in Python and other langs", 1673701824
+		),
+	),
+	
     "cryptography" => array(
         "rand" => array(
             "An algorithm for random data compression", 1618532671
