@@ -178,7 +178,7 @@ body a:hover
 }
 
 /* i.e. regular text -- make it readable */
-.article_content p
+.article_content p, .article_content summary
 {
     font-size: 28px;
     line-height: 38px;
