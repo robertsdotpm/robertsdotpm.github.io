@@ -9,13 +9,13 @@ $bk2_base = "https://robertsdotpm.svbtle.com/";
 // Display order
 $categories = array(
     "most-recent",
-	"software-engineering",
     "cryptography",
     "smart-contracts",
     "algorithmic-corporations",
     "trading-systems",
     "philosophy",
     "digital-currencies",
+	"software-engineering",
 );
     
 // Article meta-data.
