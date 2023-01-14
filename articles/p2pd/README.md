@@ -20,7 +20,7 @@ server = await loop.create_server(
 )
 ```
 
-**What this code means is:** every time a new client connects -- create a Protocol object for them. The method that does this is the 'factory' lambda function. The class also has special callback methods that are run for various events. It's pretty simple. Unfortunately, the moment you try use async functions you're in for a world of pain. But keep reading because the problems get worse.
+**What this code means is:** every time a new client connects -- create a Protocol object for them. The method that does this is the 'factory' lambda function. The class also has special callback methods that are run for various events. It's pretty simple. Unfortunately, the moment you try use async functions you're in for a world of pain.
 
 As I learned: Python does indeed have async networking features. It turns out you can use **loop.create_connection**. So if you want to write 'await connection() ... await send ... await recv' for TCP -- this code is for you. 
 
@@ -148,7 +148,9 @@ More info on that here: https://p2pd.readthedocs.io/en/latest/python/queues.html
 
 Having a library that works well is great and I've already used it to build many programs. But the reason I started this project was to make peer-to-peer connections easier.
 
-Some of the coolest software today seems to use peer-to-peer networking. Bitcoin, Bittorrent, Skype, and any number of games all use peer-to-peer features. These services are powerful because they let their users be part of running them rather than relying on a trusted third-party. The downside is they're more complex. Routers, NATs, firewalls, and dynamic IPs all contribute to making the process difficult. To do P2P networking right involves a mishmash of esoteric ideas.
+Some of the coolest software today seems to use peer-to-peer networking. Bitcoin, Bittorrent, Skype, and any number of games all use peer-to-peer features. These services are powerful because they let their users be part of running them rather than relying on a trusted third-party. The downside is they're more complex. Routers, NATs, firewalls, and dynamic IPs all contribute to making the process difficult.
+
+**To do P2P networking right involves a mishmash of esoteric ideas.**
 
 <details>
 <summary>Show P2P connectivity methods</summary>
@@ -201,13 +203,13 @@ async_test(make_p2p_con)
 ```
 </details>
 
-In P2PD there are nodes who run their own TCP servers that implement one or more protocol handlers. These are the msg_cb functions listed earlier. Nodes have their own address that can be given out to connect to them. The address includes a lot of information like what interfaces the node has, it's NAT configurations, information on signalling servers, and so on. The Node object has a connect function to handle making P2P connections. You need a node's address to be able to use it.
+In P2PD there are nodes who run their own TCP servers that implement one or more protocol handlers. These are the msg_cb functions listed earlier. Nodes have their own address that can be given out to connect to them. The address includes a lot of information like what interfaces the node has, it's NAT configurations, information on signalling servers, and so on. The Node object has a connect function to handle making P2P connections.
 
 More details on peer-to-peer networking here: https://p2pd.readthedocs.io/en/latest/python/index.html
 
 # How P2PD compares to Libp2p
 
-Libp2p is currently the most popular library for peer-to-peer networking. There are implementations of Libp2p in many languages and the Go version appears to be the most complete. A question I see arising is 'how does P2PD compare to Libp2p?' I won't write a full essay here but here are the cliff notes. Feel free to skip this section if you don't know about Libp2p.
+Libp2p is currently the most popular library for peer-to-peer networking. There are implementations of Libp2p in many languages and the Go version appears to be the most complete. A question I see arising is 'how does P2PD compare to Libp2p?' I won't write a full essay here but here are the cliff notes.
 
 <details>
 <summary>Show Libp2p comparison</summary>
@@ -227,7 +229,7 @@ P2PD is written in Python and targets Python version 3.6 or higher (3.5 and high
 
 More details on that here: https://p2pd.readthedocs.io/en/latest/rest_api.html
 
-I think it would be possible to use APE's cross-platform build of Python to have a distribution of P2PD that could easily be packaged for any device. You would then only have to execute a file and point your code at an API and the library would do the rest. For software that needed even more control over sockets I think it would be possible to share sockets with another process.
+I think it would be possible to use APE's build of Python to have P2PD packaged for any device. You would then only have to execute a file and the library would do the rest. For software that needs more control over sockets I think it would be possible to share sockets with another process.
 
 # Outro
 
