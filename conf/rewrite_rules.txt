@@ -1,0 +1,8 @@
+# If requested resource exists as a file or directory go to it
+RewriteEngine On
+RewriteCond %{DOCUMENT_ROOT}/$1 -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/$1 -d
+RewriteRule (.*) - [L]
+
+# Else rewrite requests for non-existent resources to /index.php
+RewriteRule /(.*)       /index.php?p=article&path=$1 [L]
