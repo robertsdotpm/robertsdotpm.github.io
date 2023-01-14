@@ -2,9 +2,9 @@ Last year I started work on a new async networking library for Python. I'd never
 
 # Python async networking
 
-I started my async journey by looking through the examples in the online Python docs. These docs are great and remind me of how developer-friendly the PHP docs are. Eventually I found an example for a TCP server. The code looked like this:
+I started my async journey by looking through the examples in the online Python docs. These docs are great and remind me of the developer-friendly PHP docs. Eventually I found an example for a TCP server.
 
-```python3
+```python
 class ProtocolClass(asyncio.Protocol):
 	# ... callback methods here
 	# e.g. data_receive(self, data) ...
@@ -20,11 +20,11 @@ server = await loop.create_server(
 )
 ```
 
-**What this code means is:** every time a new client connects -- create a Protocol object for them. The method that does this is the 'factory' lambda function. The class also has special callback methods that are run for various events. It's pretty simple. Unfortunately, the moment you try use async functions / coroutines with Protocol callbacks you're hit by an error. Believe me -- it is a frustrating part of Python networking and I'm not the only one who thinks so... But keep reading because the problems get worse.
+**What this code means is:** every time a new client connects -- create a Protocol object for them. The method that does this is the 'factory' lambda function. The class also has special callback methods that are run for various events. It's pretty simple. Unfortunately, the moment you try use async functions you're in for a world of pain. But keep reading because the problems get worse.
 
-As I learned: Python does indeed have async networking features. It turns out you can use the **loop.create_connection** function to return objects for use in coroutines. So if you want to write 'await connection() ... await send ... await recv' for TCP -- these objects let you do that. 
+As I learned: Python does indeed have async networking features. It turns out you can use **loop.create_connection**. So if you want to write 'await connection() ... await send ... await recv' for TCP -- this code is for you. 
 
-```python3
+```python
 # Open a new TCP connection.
 reader, writer = await asyncio.open_connection('127.0.0.1', 8888)
 
@@ -43,16 +43,16 @@ await writer.wait_closed()
 # ... and the answer is: there isn't one.
 ```
 
-The main benefit to using async await is the program preserves its sequential control flow but 'blocking' operations don't stop the program. Instead, if a task needs to wait for a result, execution is given back to the event loop, and other tasks are free to run or be resumed when they're ready. One disadvantage to coroutines is you have to manually check for changes. E.g. if there's new data to be read from a stream it's your job to await it. With Protocol classes the event loop does that for you.
+The main benefit to using async await is the program preserves its sequential control flow but 'blocking' operations don't stop the program. Instead, if a task needs to wait for a result, execution is given back to the event loop, and other tasks are free to run or be resumed when they're ready. One disadvantage to coroutines is you have to manually check for changes. E.g. if there's new data to be read from a stream it's your job to await it.
 
 **From these examples -- a myriad of issues stands out to me:**
 
-1. Protocol classes and async functions force you to choose between them. Neither one is compatible with the other.
+1. Protocol classes and async functions force you to choose between them. Neither is compatible with the other.
 2. The APIs for TCP and UDP are different. For Protocol classes even the method names vary.
-3. There is no async equivalent of 'reader-writer streams' for UDP. This means you can't use async networking with UDP in Python.
+3. There is no async equivalent of 'reader-writer streams' for UDP.
 4. The way server listen sockets bind to interfaces is poorly defined (if at all.)
-5. IPv6 is painful to use in Python and requires specialised code to handle all address types (try it if you dare.)
-6. Having to manage two objects for TCP (a reader and writer stream) is ... annoying. Developers like sockets because they encapsulate everything in one place. One item is easier to track and pass around a complex program.
+5. IPv6 is painful to use in Python and requires specialised code to handle all address types.
+6. Having to manage two objects for TCP (a reader and writer stream) is ... annoying.
 
 My idea to solve these problems is to encapsulate everything in a well-designed, consistent API. The API should allow endpoints to be used with both async functions and Protocol-style callbacks; It should not have any transport-specific code (so the same code will work with TCP and UDP); It should support network interfaces well; And IPv6 should be as easy to use as IPv4.
 
@@ -60,9 +60,9 @@ Here's what I came up with.
 
 #  P2PD async networking library
 
-The first problem I wanted to solve was the lack of network interface support. In network programming it's common to see code that glosses over interface management. What makes this so appealing is the operating system supports default interfaces. So why bother choosing one? The problem is: if you write code that only uses the default interface then your program won't be able to utilise all routes -- possibly an issue for some software. It is for a networking library!
+The first problem I wanted to solve was the lack of network interface support. In network programming it's common to see code that glosses over interface management. What makes this so appealing is the operating system supports default interfaces. So why bother choosing one? The problem is: if you write code that only uses the default interface then your program won't be able to utilise all routes -- possibly an issue for some software.
 
-```python3
+```python
 from p2pd import *
 
 async def main():
@@ -78,7 +78,7 @@ async def main():
 
 Previously, I spoke about how the asyncio module only provides async functions for TCP. I thought this was a major limitation. So I added support for async UDP. Obviously UDP isn't reliable so sometimes recv calls time out. But importantly -- doing I/O isn't going to block the program so the event loop will be free to work on other tasks.
 
-```python3
+```python
 	# Open UDP endpoint.
 	await route.bind() # port=0 ... 
 	dest = await Address("p2pd.net", 7, route)
@@ -97,9 +97,9 @@ Previously, I spoke about how the asyncio module only provides async functions f
 	# https://p2pd.readthedocs.io/en/latest/python/basics.html
 ```
 
-A key goal I had for this library was to provide the same APIs for most use-cases. No matter if the transport is TCP or UDP; IPv4 or IPv6; Server or client. The main abstraction I use is called a 'pipe.' Pipes allow developers to choose what programming model to use. They support async coroutines and event-based callbacks. My library fully supports using coroutines as callbacks or regular functions. In the past this was a major source of pain for developers. No longer!
+A key goal I had for this library was to provide the same APIs for most use-cases. No matter if the transport is TCP or UDP; IPv4 or IPv6; Server or client. The main abstraction I use is called a 'pipe.' Pipes allow developers to choose what programming model to use. They support async coroutines and event-based callbacks. My library fully supports using coroutines as callbacks or regular functions.
 
-```python3
+```python
 	async def msg_cb(msg, client_tup, pipe):
 		await pipe.send(msg, client_tup)
 
@@ -113,7 +113,7 @@ A key goal I had for this library was to provide the same APIs for most use-case
 
 Some servers need to support multiple protocols and address families. For this there is the Daemon class. There's not much to it. It simply handles creating pipes for you.
 
-```python3
+```python
 class EchoServer(Daemon):
     def __init__(self):
         super().__init__()
@@ -131,9 +131,9 @@ async def main(route):
 	)
 ```
 
-You'll notice that the only way to build servers in Python is with callbacks. I think this is usually a good model. But what if you want to write an async version? That is -- what if you want to await accepting a new client? Well, now you can. Simply await the pipe and it will return a regular pipe for the next client that connects to the server. The pipe allows await for send and receive.
+You'll notice that the only way to build servers in Python is with callbacks. I think this is usually a good model. But what if you want to write an async version? That is -- what if you want to await accepting a new client? Well, now you can. Simply await the pipe and it will return a regular pipe for the next client that connects to the server.
 
-```python3
+```python
 client = await pipe
 await client.send(b"hello")
 ```
@@ -155,14 +155,14 @@ Some of the coolest software today seems to use peer-to-peer networking. Bitcoin
 
 1. Direct connect -- If a peer's node port is open then a regular TCP connection can be used. When the node server is started the library handles IPv4 port forwarding and IPv6 pin hole rules.
 2. Reverse connect -- If a host's node port is reachable then you can simply tell a peer to connect to you. Reverse connect means that connectivity is possible if either side to a connection is able to open a port.
-3. TCP hole punching -- A little known feature of TCP allows for a new connection to be created if two peers connect at the same time. P2PD extensively enumerates NAT behaviour to optimise the chances of success with TCP hole punching.
-4. TURN servers -- A protocol for proxy servers called 'TURN' can be used as a last resort. By default this method is not enabled as it uses UDP for the transport so packets may arrive out of order or get lost. Perhaps this will be improved in the future.
+3. TCP hole punching -- A little known feature of TCP allows for a new connection to be created if two peers connect at the same time. P2PD extensively enumerates NAT behaviour to optimise success.
+4. TURN servers -- A protocol for proxy servers called 'TURN' can be used as a last resort. By default this method is not enabled as it uses UDP for the transport so packets may arrive out of order or get lost.
 </details>
 
 <details>
 <summary>P2P direct connect example</summary>
 
-```python3
+```python
 from p2pd import *
 
 # Put your custom protocol code here.
@@ -210,28 +210,24 @@ More details on peer-to-peer networking here: https://p2pd.readthedocs.io/en/lat
 Libp2p is currently the most popular library for peer-to-peer networking. There are implementations of Libp2p in many languages and the Go version appears to be the most complete. A question I see arising is 'how does P2PD compare to Libp2p?' I won't write a full essay here but here are the cliff notes. Feel free to skip this section if you don't know about Libp2p.
 
 <details>
-<summary>Show comparison</summary>
+<summary>Show Libp2p comparison</summary>
   
 1. **Libp2p's implementation of TCP hole punching is poor** and will result in lower success for direct connections. The reason for this is it's NAT enumeration code doesn't account for a basic range of NAT behaviours used by routers. Furthermore, there appears to be no way for nodes to synchronise hole punching which will result in higher failure rates for low latency connections.
-
 2. **Libp2p's address format has insufficient detail for common scenarios.** For example, if someone hosts a server in the same LAN, a Libp2p address cannot identify that server. Should a server's port be closed -- the address provides no information on a node's NAT details to help with NAT traversal.
-
 3. **Libp2p reinvents the wheel for common protocols.** Libp2p uses custom protocols for address lookup, signalling, and relaying. Consequently, they cannot take advantage of public infrastructure or the open source software that already exists. All of Libp2p's custom protocols have established alternatives: STUN, MQTT, and TURN.
-
 4. **Libp2p glosses over network interface management.** As Libp2p nodes were not designed with multiple interfaces in mind they are not able to outright use alternative NICs that may have more favourable NAT configurations for peer-to-peer networking.
+5. **Libp2p seems to have a weak culture around testing.** Libp2p has a small number of unit tests and seems to have virtually no infrastructure in place for live testing. Networking code needs to interact with real systems to know it works. So running your own echo servers; test nodes; is important.
 
-5. **Libp2p seems to have a weak culture around testing.** Libp2p has a small number of unit tests and seems to have virtually no infrastructure in place for live testing. Networking code needs to interact with real systems to know it works. So running your own echo servers; protocol test nodes; debug servers, and so on; is part of the process.
-
-TL; DR: It seems that every aspect of Libp2p that ought to not have been over-engineered -- has been -- while the things that would have benefited from added attention (like a robust address format and NAT traversal techniques) have been the most neglected. I am not a fan of Libp2p and think many of it's approaches show a poor understanding of networking.
+TL; DR: It seems that every aspect of Libp2p that ought to not have been over-engineered -- has been -- while the things that would have benefited from added attention (like a robust address format and NAT traversal techniques) have been the most neglected. I think many of Libp2p's approaches show a poor understanding of networking.
 </details>
 
 # Support for other languages?
 
-P2PD is written in Python and targets Python version 3.6 or higher (3.5 and higher on non-Windows.) It supports most platforms. But what about other languages? Is it possible to use P2PD from languages that aren't Python? What I came up with was a special REST server for doing P2P networking. The server let's you lookup information on your interfaces, make peer-to-peer connections, push/pull/pub/sub, and more. Everything you would need to do P2P direct connections from other languages well.
+P2PD is written in Python and targets Python version 3.6 or higher (3.5 and higher on non-Windows.) It supports most platforms. But what about other languages? Is it possible to use P2PD from languages that aren't Python? What I came up with was a special REST server for doing P2P networking. The server let's you lookup information on your interfaces, make peer-to-peer connections, push/pull/pub/sub, and more.
 
 More details on that here: https://p2pd.readthedocs.io/en/latest/rest_api.html
 
-I think it would be possible to use APE's cross-platform build of Python to have a distribution of P2PD that could easily be packaged for any device. You would then only have to execute a file and point your code at an API and the library would do the rest. For software that needed even more control over sockets -- I think it would be possible to share sockets with another process.
+I think it would be possible to use APE's cross-platform build of Python to have a distribution of P2PD that could easily be packaged for any device. You would then only have to execute a file and point your code at an API and the library would do the rest. For software that needed even more control over sockets I think it would be possible to share sockets with another process.
 
 # Outro
 
@@ -241,4 +237,4 @@ If you made it this far then thanks for reading! If you liked this post you can 
 * https://pypi.org/project/p2pd/
 * https://p2pd.readthedocs.io
 
-I'm also looking for my next software engineering role. So if you need someone who ships hit me up (matthew@roberts.pm).
+I'm also looking for my next software engineering role. So if you need someone who ships hit me up.
