@@ -237,8 +237,8 @@ I think it would be possible to use APE's cross-platform build of Python to have
 
 If you made it this far then thanks for reading! If you liked this post you can check out P2PD here:
 
-https://github.com/robertsdotpm/p2pd
-https://pypi.org/project/p2pd/
-https://p2pd.readthedocs.io
+* https://github.com/robertsdotpm/p2pd
+* https://pypi.org/project/p2pd/
+* https://p2pd.readthedocs.io
 
 I'm also looking for my next software engineering role. So if you need someone who ships hit me up (matthew@roberts.pm).
