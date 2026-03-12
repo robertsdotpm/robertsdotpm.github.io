@@ -58,3 +58,4 @@ html_context = {
 
 # Relative paths fix
 html_use_relative_urls = True
+html_static_path = ['_static']
