@@ -26,6 +26,15 @@ if errorlevel 9009 (
 )
 
 %SPHINXBUILD% -M %1 %SOURCEDIR% %BUILDDIR% %SPHINXOPTS% %O%
+
+:: Check if the first argument was "html" and the build succeeded
+if /I "%1" == "html" (
+    if exist "%BUILDDIR%" (
+        copy /y NUL "%BUILDDIR%\.nojekyll" >NUL
+    )
+)
+
+
 goto end
 
 :help
