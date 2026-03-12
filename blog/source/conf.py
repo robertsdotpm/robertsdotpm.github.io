@@ -56,3 +56,5 @@ html_context = {
     """
 }
 
+# Relative paths fix
+html_use_relative_urls = True
