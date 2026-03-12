@@ -43,7 +43,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Software engineering</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Offline computing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Offline computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#benefits">Benefits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implication">Implication</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -75,7 +79,48 @@
              
   <section id="offline-computing">
 <h1>Offline computing<a class="headerlink" href="#offline-computing" title="Link to this heading"></a></h1>
-<p>placeholder</p>
+<p>Not long ago I was playing the computer game “V Rising” when I came across a surprising
+feature. In the game you are able to have followers gather resources after a set period.
+What’s interesting is how the feature was implemented. You might think that they
+used in-game time to measure this – but instead it was tied to real-life time.
+This meant that if the host shut down the server the amount of time was applied
+<strong>as if the followers were still working when the server was off.</strong></p>
+<p>When I saw that feature I couldn’t stop thinking about it. I meant: isn’t there
+something extremely weird here? Normally computer programs aren’t supposed to be
+able to run when the power is off. This goes against every instinct there is for
+how software works. Granted, the effect is an illusion – the algorithm isn’t
+really “running” offline – the server only adjusts the results when it’s back on.
+But I believe this is still an absolutely whimsical way to think of software.</p>
+<p>It means that there are systems for which results don’t have to be given
+in real time and that further – there are interesting trade-offs. For instance,
+imagine a novel securities market based on the V Rising gathering design.
+You might allow algorithms to control resources, defend, attack, gather, and so on.
+The server would charge a fee on submission which is used to spawn
+resources in-game. Effectively, a time-simulated game
+without the need for full server availability.</p>
+<section id="benefits">
+<h2>Benefits<a class="headerlink" href="#benefits" title="Link to this heading"></a></h2>
+<p><strong>Reduced interaction</strong> – Humans don’t have to interact in real time. All strategies
+are pre-emptively committed to, possibly with markets for different time frames
+like daily, weekly, etc.</p>
+<p><strong>Deterministic</strong> – A purely deterministic simulation might not be as interesting,
+but the server can still inject randomness, e.g., random areas for resources to
+spawn.</p>
+<p><strong>Lower cost</strong> – The entire system can be down after strategies are committed to,
+which reduces costs. Users don’t have to watch charts all day either.</p>
+<p><strong>Fairness</strong> – Market blackouts make participation fairer. Front-running is strongly
+mitigated by avoiding order books and keeping strategies private.</p>
+<p><strong>Editing</strong> – One twist would allow strategies to be edited until execution is ready.</p>
+</section>
+<section id="implication">
+<h2>Implication<a class="headerlink" href="#implication" title="Link to this heading"></a></h2>
+<p>The essential property of deterministic algorithms is not temporal execution, but
+mapping from initial conditions to outcomes given the passage of time as a parameter.
+This opens the door to systems that operate in offline, batch, or delayed modes
+without losing fidelity, fairness, or strategic complexity. In essence, algorithms
+can exist conceptually before they are ever executed, and their “running” is a
+matter of computation convenience, not logical necessity.</p>
+</section>
 </section>
 
 
