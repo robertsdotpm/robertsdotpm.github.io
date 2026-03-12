@@ -1,10 +1,12 @@
+from datetime import datetime
+
 # Configuration file for the Sphinx documentation builder.
 
 # -- Project information
 
-project = 'P2PD'
-copyright = '2024'
+project = "Aul Ma's research facility"
 author = 'Matthew Roberts'
+copyright = f'{datetime.now().year}, {author}'
 
 release = '0.1'
 version = '3.0.0'
@@ -32,5 +34,25 @@ templates_path = ['_templates']
 
 html_theme = 'sphinx_rtd_theme'
 
+html_theme_options = {
+    "style_external_links": False,
+}
+
+html_show_sphinx = False
+
 # -- Options for EPUB output
 epub_show_urls = 'footnote'
+
+
+html_context = {
+    "footer_mirrors": """
+    <div style="text-align: left; margin-top: 10px;">
+
+            <strong>Mirrors:</strong> 
+            <a href="https://robertsdotpm.github.io/">Github Pages</a> | 
+            <a href="https://robertsdotpm.readthedocs.io/">Read The Docs</a>
+
+    </div>
+    """
+}
+

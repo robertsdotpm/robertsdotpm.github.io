@@ -1,0 +1,18 @@
+{% extends "!footer.html" %}
+
+{# This empty block overrides and removes the "Built with Sphinx" line #}
+{% block show_sphinx %}
+{% endblock %}
+
+{# This removes the "provided by Read the Docs" part #}
+{% block show_readthedocs %}
+{% endblock %}
+
+{% block extrafooter %}
+    {{ super() }}
+    {% if footer_mirrors %}
+
+            {{ footer_mirrors|safe }}
+
+    {% endif %}
+{% endblock %}
