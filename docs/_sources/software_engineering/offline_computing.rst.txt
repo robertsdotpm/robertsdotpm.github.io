@@ -8,7 +8,7 @@ used in-game time to measure this -- but instead it was tied to real-life time.
 This meant that if the host shut down the server the amount of time was applied
 **as if the followers were still working when the server was off.**
 
-When I saw that feature I couldn't stop thinking about it. I meant: isn't there
+When I saw that feature I couldn't stop thinking about it. I mean: isn't there
 something extremely weird here? Normally computer programs aren't supposed to be
 able to run when the power is off. This goes against every instinct there is for
 how software works. Granted, the effect is an illusion -- the algorithm isn't
