@@ -11,6 +11,10 @@ copyright = f'{datetime.now().year}, {author}'
 release = '0.1'
 version = '3.0.0'
 
+# Change top-left title
+html_title = project  
+html_short_title = project
+
 # -- General configuration
 
 extensions = [

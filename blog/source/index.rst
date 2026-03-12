@@ -1,5 +1,5 @@
-Documentation
+Writings
 ====================
 
-Placeholder
-
+.. toctree::
+   software_engineering/index
