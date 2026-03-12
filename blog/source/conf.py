@@ -36,6 +36,10 @@ html_theme = 'sphinx_rtd_theme'
 
 html_theme_options = {
     "style_external_links": False,
+    "collapse_navigation": False,
+    "sticky_navigation": True,
+    "navigation_depth": 4,
+    "titles_only": False,
 }
 
 html_show_sphinx = False
@@ -58,4 +62,4 @@ html_context = {
 
 # Relative paths fix
 html_use_relative_urls = True
-html_static_path = ['_static']
+#html_static_path = ['_static']
