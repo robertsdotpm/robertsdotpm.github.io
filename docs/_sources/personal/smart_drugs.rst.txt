@@ -1,0 +1,120 @@
+Smart drugs are bullshit
+========================
+
+Smart drugs, or "nootropics," are popular because the idea is seductive: swallow a pill and become a better version of yourself. Entire online communities revolve around this promise - places like `r/nootropics <https://www.reddit.com/r/nootropics/>`_ - and a niche industry of influencers. People like `Andrew Huberman <https://hubermanlab.com/>`_ or `Dave Asprey <https://daveasprey.com/>`_ talk about optimization stacks, brain upgrades, and productivity chemistry.
+
+In my experience, most of it is bullshit. That probably sounds harsh, but the deeper you look the less impressive the whole space becomes.
+
+Does anyone want some cawffee
+---------------------------------------
+
+Start with the most widely consumed psychoactive drug on Earth: coffee.
+
+Assume you have zero caffeine tolerance. You drink a cup of coffee and get a strong buzz - motivation, energy, sharper focus. Productivity jumps. For a few hours it feels like a miracle.
+
+Naturally the conclusion is obvious: coffee is great. Tomorrow I'll drink coffee again.
+
+Day two arrives. The sun rises on another productive morning. You drink the coffee and - mostly - the effect is still there. You're in the honeymoon phase. If this works so well, why not keep going?
+
+So you do. Every day. Squeeze every last drop out of it.
+
+What actually happens is that your brain adapts. Caffeine blocks adenosine receptors, which normally signal fatigue. When those signals get blocked constantly, the brain compensates by creating more receptors in an attempt to restore balance.
+
+Eventually caffeine stops producing the original boost. Instead it just prevents you from feeling worse. When caffeine leaves your system, all those extra receptors suddenly become active, and fatigue hits harder than it would have otherwise. The system eventually readjusts, but in the meantime most people simply drink more coffee to compensate.
+
+Pharma is complex
+---------------------------------------
+
+Adenosine receptors are only part of the story. Caffeine interacts with far more systems than most people realize - dopamine signaling, cortical activation, multiple neuromodulatory circuits. Adenosine gets all the attention because it's easy to explain.
+
+What is surprising is how little we actually know about such a widely used drug.
+
+Take withdrawal. The standard literature describes caffeine withdrawal as short - a few days to maybe a week. But anecdotal reports from communities where people quit caffeine tell a different story. Many describe months of withdrawals before things normalize.
+
+That gap between literature and lived experience shows up often with substances.
+
+Why am I talking about caffeine?
+--------------------------------
+
+Because caffeine is the perfect example of how a powerful cognitive enhancer slowly turns into something that merely maintains baseline.
+
+For habitual users, the cognitive benefits of caffeine mostly restore them to where they would have been without it. The "boost" disappears once tolerance develops.
+
+This pattern repeats again and again across the entire category of cognitive enhancement.
+
+Okay, but what about "better" drugs? R-right guise?
+---------------------------------------------------
+
+Consider prescription stimulants like `Methylphenidate <https://en.wikipedia.org/wiki/Methylphenidate>`_ or `Dextroamphetamine <https://en.wikipedia.org/wiki/Dextroamphetamine>`_.
+
+These drugs are extremely effective when used to treat disorders such as `ADHD <https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder>`_. Brain imaging clearly shows increased activity in regions responsible for executive control and attention.
+
+But the medical goal here is treatment, not optimization. The assumption is that a dysfunctional system is being corrected. Healthy users are a different situation.
+
+Yes, stimulants can improve attention in the short term. That is what stimulants do. The question is whether these improvements scale in a stable, sustainable way.
+
+Looking at user communities, the pattern is not encouraging. Instead of stories about life-changing cognitive transformation, the common threads look more like this:
+
+- "Why do stimulants make me emotionally numb?"
+- "Why do higher doses make me feel stupid?"
+- "The magic from stimulants is gone - what now?"
+
+Side effects and diminishing returns dominate the conversation. If these drugs reliably transformed healthy people, the hype would be overwhelming. Instead most discussion revolves around chasing an effect that fades quickly.
+
+The industry is built on vague language
+---------------------------------------
+
+Imagine a nutritionist telling you:
+
+"**This food is great - it contains lots of vitamin C, which boosts your immune system.**"
+
+That sounds impressive. Your brain assumes the effect is meaningful. But what is missing is quantification. How much does it help? Under what conditions? Sometimes the real answer looks more like: elderly people during winter experience 0.01 percent fewer colds.
+
+The same logic applies to the nootropics industry. Nearly every compound has *some* measurable biological effect, but the effect is often too small or inconsistent to matter in practice.  It is that lack of precision that nootropics influencers rely on. They describe feelings like: "I felt sharper," "I felt more productive," "this stack changed my focus." But rarely do numbers ever appear.
+
+If the effects were large and reliable, quantification would be the easiest part. Even highly credentialed experts often fall into this pattern. **The strongest cognitive enhancer might not be any particular drug at all. It may simply be the clinician effect - the tendency for people to experience stronger benefits when a treatment is recommended by a trusted doctor.**
+
+There are exceptions. Researchers like `Gwern Branwen <https://www.gwern.net/>`_ or the science communicator behind the `Physionic <https://www.youtube.com/@Physionic>`_ channel tend to dig deeply into the literature. But their conclusions often converge on the same result: effect sizes that are tiny, inconsistent, or irrelevant.
+
+The most popular supplements barely have evidence
+-------------------------------------------------
+
+Visit `r/nootropics <https://www.reddit.com/r/nootropics/>`_ and you will find dozens of supplements enthusiastically recommended. Nearly every compound has a group of believers.
+
+The problem is that high-quality research on healthy individuals is rare. Most medical research focuses on treating disease, not helping healthy people perform slightly better at exams or work. Even caffeine, the world's favorite stimulant, is surprisingly under-studied in many areas. Other popular supplements are far worse.
+
+Take `Lion's Mane mushroom <https://en.wikipedia.org/wiki/Hericium_erinaceus>`_. It is one of the most frequently recommended supplements in the community. Yet there are no large-scale trials demonstrating meaningful cognitive enhancement in healthy people. Interestingly, user reports often describe a different effect: depression or anhedonia. So the compound may be doing *something* - just not anything beneficial. 
+
+A few commonly discussed examples illustrate the pattern:
+
+- `Piracetam <https://en.wikipedia.org/wiki/Piracetam>`_ -- minimal or inconsistent benefits in healthy adults. Evidence mixed and weak.
+- `N-Acetylcysteine (NAC) <https://en.wikipedia.org/wiki/N-Acetylcysteine>`_ -- sometimes linked to emotional blunting with long-term use. Follow-up psychiatric studies have been largely disappointing.
+- `Bromantane <https://en.wikipedia.org/wiki/Bromantane>`_ -- Russian studies suggest fatigue reduction, but high-quality cognitive research is limited. There might be something here but we don't know.
+- `Phenibut <https://en.wikipedia.org/wiki/Phenibut>`_ -- closer to a recreational drug than a nootropic. Dependence risk is high.
+- `Modafinil <https://en.wikipedia.org/wiki/Modafinil>`_ -- promotes wakefulness and can improve focus modestly, but sleep disruption quickly undermines long-term cognitive performance.
+- `Nicotine <https://en.wikipedia.org/wiki/Nicotine>`_ -- surprisingly consistent evidence for cognitive enhancement... but its nicotine.
+
+Looking across the entire landscape, very few compounds deliver strong, durable improvements for healthy people. The promise of "smart drugs" is compelling. The reality is mostly small effects, rapid tolerance, and a lot of hopeful interpretation.
+
+Why is this so difficult?
+--------------------------
+
+I think evolution makes enhancing human performance difficult. Our bodies and brains have already been finely tuned to survive and function in a wide range of environments. Tweaking the system might produce short-term gains, but often at a cost in the long run. 
+
+Some hypotheses suggest that humans co-evolved with plants, regularly ingesting psychoactive compounds that provided subtle benefits. If true, it might make sense that our bodies respond to some of these compounds positively, even though we cannot synthesize them ourselves. That's an interesting idea to consider, and might point to compounds available in the environment.
+
+What seems to work most effectively is:
+
+1. Limiting influences that harm performance (e.g., addictions, unhealthy lifestyle choices)  
+2. Optimizing processes that naturally promote performance (e.g., exercise, nutrition, etc)
+
+These approaches align with how the body actually works.
+
+If compounds were introduced, the protocol would likely be very different from how people normally use them. Adaptations to the drug would require long breaks between doses and might necessitate multiple compounds. As many of the compounds that are effective also cause addiction: adherence to such a protocol would be very difficult.
+
+Suffice it to say: you would effectively be a study of one, and much of it would be guesswork. Until more rigorous research is done, the field of nootropics remains a domain of wishful thinking.
+
+Outro
+------
+
+Edited by AI, otherwise my original writing.
