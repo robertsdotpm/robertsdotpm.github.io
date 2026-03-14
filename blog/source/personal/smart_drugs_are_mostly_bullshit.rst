@@ -1,5 +1,5 @@
-Smart drugs are bullshit
-========================
+Smart drugs are mostly bullshit
+=================================
 
 Smart drugs, or "nootropics," are popular because the idea is seductive: swallow a pill and become a better version of yourself. Entire online communities revolve around this promise - places like `r/nootropics <https://www.reddit.com/r/nootropics/>`_ - and a niche industry of influencers. People like `Andrew Huberman <https://hubermanlab.com/>`_ or `Dave Asprey <https://daveasprey.com/>`_ talk about optimization stacks, brain upgrades, and productivity chemistry.
 
@@ -47,11 +47,9 @@ Okay, but what about "better" drugs? R-right guise?
 
 Consider prescription stimulants like `Methylphenidate <https://en.wikipedia.org/wiki/Methylphenidate>`_ or `Dextroamphetamine <https://en.wikipedia.org/wiki/Dextroamphetamine>`_.
 
-These drugs are extremely effective when used to treat disorders such as `ADHD <https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder>`_. Brain imaging clearly shows increased activity in regions responsible for executive control and attention.
+These drugs are extremely effective when used to treat disorders such as `ADHD <https://en.wikipedia.org/wiki/Attention_deficit_hyperactivity_disorder>`_. Brain imaging clearly shows increased activity in regions responsible for executive control and attention. But the medical goal here is treatment, not optimization. The assumption is that a dysfunctional system is being corrected. Healthy users are a different situation.
 
-But the medical goal here is treatment, not optimization. The assumption is that a dysfunctional system is being corrected. Healthy users are a different situation.
-
-Yes, stimulants can improve attention in the short term. That is what stimulants do. The question is whether these improvements scale in a stable, sustainable way.
+Yes, stimulants can improve attention in the short term. That is what stimulants do. The question is whether these improvements scale in a stable, sustainable way. Research on stimulant use in healthy people is mixed. Some studies show small improvements in vigilance or task engagement, but these effects are often modest and inconsistent. In certain cases, people report feeling more motivated or focused while objective performance barely changes.
 
 Looking at user communities, the pattern is not encouraging. Instead of stories about life-changing cognitive transformation, the common threads look more like this:
 
@@ -59,7 +57,7 @@ Looking at user communities, the pattern is not encouraging. Instead of stories 
 - "Why do higher doses make me feel stupid?"
 - "The magic from stimulants is gone - what now?"
 
-Side effects and diminishing returns dominate the conversation. If these drugs reliably transformed healthy people, the hype would be overwhelming. Instead most discussion revolves around chasing an effect that fades quickly.
+Side effects and diminishing returns dominate the conversation. If these drugs reliably transformed healthy people, the hype would be overwhelming and not what we see.
 
 The industry is built on vague language
 ---------------------------------------
@@ -96,19 +94,15 @@ A few commonly discussed examples illustrate the pattern:
 
 Looking across the entire landscape, very few compounds deliver strong, durable improvements for healthy people. The promise of "smart drugs" is compelling. The reality is mostly small effects, rapid tolerance, and a lot of hopeful interpretation.
 
-Why is this so difficult?
---------------------------
+Simpler ways to improve cognition
+------------------------------------
 
-I think evolution makes enhancing human performance difficult. Our bodies and brains have already been finely tuned to survive and function in a wide range of environments. Tweaking the system might produce short-term gains, but often at a cost in the long run. 
+What is less speculative than trying out mystery chemicals is to focus on improving
+processes based on how the body already works. For example:
 
-Some hypotheses suggest that humans co-evolved with plants, regularly ingesting psychoactive compounds that provided subtle benefits. If true, it might make sense that our bodies respond to some of these compounds positively, even though we cannot synthesize them ourselves. That's an interesting idea to consider, and might point to compounds available in the environment.
-
-What seems to work most effectively is:
 
 1. Limiting influences that harm performance (e.g., addictions, unhealthy lifestyle choices)  
 2. Optimizing processes that naturally promote performance (e.g., exercise, nutrition, etc)
-
-These approaches align with how the body actually works.
 
 If compounds were introduced, the protocol would likely be very different from how people normally use them. Adaptations to the drug would require long breaks between doses and might necessitate multiple compounds. As many of the compounds that are effective also cause addiction: adherence to such a protocol would be very difficult.
 
