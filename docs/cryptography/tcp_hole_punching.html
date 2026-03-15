@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A most elegant TCP hole punching algorithm &mdash; Aul Ma&#39;s research facility</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Cryptography" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Aul Ma's research facility
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../personal/index.html">Personal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html">Smart drugs are mostly bullshit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#does-anyone-want-some-cawffee">Does anyone want some cawffee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#pharma-is-complex">Pharma is complex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#why-am-i-talking-about-caffeine">Why am I talking about caffeine?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#okay-but-what-about-better-drugs-r-right-guise">Okay, but what about “better” drugs? R-right guise?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-industry-is-built-on-vague-language">The industry is built on vague language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-most-popular-supplements-barely-have-evidence">The most popular supplements barely have evidence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#simpler-ways-to-improve-cognition">Simpler ways to improve cognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#outro">Outro</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../software_engineering/index.html">Software engineering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../software_engineering/offline_computing.html">Offline computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../software_engineering/offline_computing.html#benefits">Benefits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../software_engineering/offline_computing.html#implication">Implication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Cryptography</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">A most elegant TCP hole punching algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#part-1-selecting-the-bucket">Part 1: selecting the bucket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#part-2-selecting-ports">Part 2: selecting ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#part-3-sockets-and-networking">Part 3: sockets and networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#part-4-winner-selection">Part 4: winner selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#part-5-putting-it-all-together">Part 5: putting it all together</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Aul Ma's research facility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Cryptography</a></li>
+      <li class="breadcrumb-item active">A most elegant TCP hole punching algorithm</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/cryptography/tcp_hole_punching.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="a-most-elegant-tcp-hole-punching-algorithm">
+<h1>A most elegant TCP hole punching algorithm<a class="headerlink" href="#a-most-elegant-tcp-hole-punching-algorithm" title="Link to this heading"></a></h1>
+<p>TCP hole punching is a way to connect two computers behind NAT routers. The
+technique has a lot of requirements to work.</p>
+<ul class="simple">
+<li><p>Both sides must know each other’s WAN IPs</p></li>
+<li><p>They must know the right external ports to use</p></li>
+<li><p>They must connect at exactly the same time</p></li>
+</ul>
+<p>In practice this collapses to using STUN to lookup the WAN IP, doing NAT type
+enumeration and port prediction, synchronizing time with NTP, and
+having both sides exchange all the needed meta data (WAN IP, port predictions,
+future NTP punch time) via some “channel.”</p>
+<p>That involves a whole list of infrastructure and code to work – which is complex
+and error-prone. What if you just wanted to test whether
+your punching algorithm works? You don’t care about every other part of the software.
+This is a way to do that.</p>
+<section id="part-1-selecting-the-bucket">
+<h2>Part 1: selecting the bucket<a class="headerlink" href="#part-1-selecting-the-bucket" title="Link to this heading"></a></h2>
+<p>A simple way to bypass the need for fixed infrastructure in hole punching
+algorithms is by using a deterministic algorithm to derive all meta data from
+a single parameter. Here’s how it works.</p>
+<p>First, a starting parameter is chosen based on the unix timestamp. What we need is
+a number both sides can converge on without requiring any communication. However,
+as we know in distributed systems theory – there is no “now” in networks. So a
+little math is used to make the “now.”</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">now</span> <span class="o">=</span> <span class="n">timestamp</span><span class="p">()</span>
+<span class="n">max_clock_error</span> <span class="o">=</span> <span class="mi">20</span><span class="n">s</span> <span class="c1"># How far off the timestamp can be</span>
+<span class="n">min_run_window</span> <span class="o">=</span> <span class="mi">10</span><span class="n">s</span> <span class="c1"># Total time window to run the program for both sides</span>
+<span class="n">window</span> <span class="o">=</span> <span class="p">(</span><span class="n">max_clock_error</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="n">bucket</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">now</span> <span class="o">-</span> <span class="n">max_clock_error</span><span class="p">)</span> <span class="o">//</span> <span class="n">window</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We define what an accepted solution looks like. There
+ought to be a certain amount of time that the protocol can run in. A certain range
+that a timestamp must fall in to be considered valid. This information is combined
+and then quantized in a way that both sides converge on the same number
+even given variations to clock skew. This we term the “bucket.”</p>
+</section>
+<section id="part-2-selecting-ports">
+<h2>Part 2: selecting ports<a class="headerlink" href="#part-2-selecting-ports" title="Link to this heading"></a></h2>
+<p>Now that both sides share the same bucket we can use this to derive a list of
+shared ports. The idea behind the port list is that the local port will equal
+the external port. Many home routers try to preserve the source port in external
+mappings. This is a property called “equal delta mapping” – it won’t work on
+all routers but for our algorithm we’re sacrificing coverage for simplicity.</p>
+<p>In order to generate a shared list of ports without communication between the two
+sides – the bucket is used as a seed to a pseudo-random number generator. This
+allows for a much smoother conversion of the bucket number which might otherwise
+have little direct variation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">large_prime</span> <span class="o">=</span> <span class="mi">2654435761</span>
+<span class="n">stable_boundary</span> <span class="o">=</span> <span class="p">(</span><span class="n">bucket</span> <span class="o">*</span> <span class="n">large_prime</span><span class="p">)</span> <span class="o">%</span> <span class="mh">0xFFFFFFFF</span>
+</pre></div>
+</div>
+<p>The FF… number fixes the range for the boundary number so it doesn’t overflow what
+the PRNG accepts as a seed. A prime number is used for the multiplier because if
+the multiplier shares a common factor with the modulus (0xff..) then the space of
+possible numbers shrink due to shared factors. A prime number ensures
+that the number space contains unique items.</p>
+<p>The port range is now computed based on using a randrange func. In my code I
+generate 16 ports and throw out any I can’t bind to. It is expected that there
+will be some port collisions with existing programs in the OS when manually
+selecting random ports like this.</p>
+</section>
+<section id="part-3-sockets-and-networking">
+<h2>Part 3: sockets and networking<a class="headerlink" href="#part-3-sockets-and-networking" title="Link to this heading"></a></h2>
+<p>It is helpful to review the requirements for TCP hole punching before we proceed.
+There are very specific socket options that must be set for it to work.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEPORT</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>TCP hole punching involves aggressively reusing socket addresses. Normally with TCP, if a connection fails you close the socket. But with TCP hole punching
+if you do any kind of cleanup you break the protocol.
+Cleanup means calling close. And close means possibly sending out an RST packet
+that tells the remote router “bad connection, disregard.”</p>
+<p>If you close the socket the OS will also start its own cleanup process. The socket
+will enter states like TIME_WAIT and will be harder to reliably reuse the same address
+even if you do set the right socket options. I also want to add that
+the only really correct model for TCP hole punching is to use non-blocking sockets.
+You can’t use blocking sockets because you need to be able to rapidly send SYN
+packets without having to wait for a response.</p>
+<p>Async networking won’t work here either. Async networking prevents your software from
+being able to precisely control timing and TCP hole punching is
+highly sensitive to timing. If packet exchange is off by even a few miniseconds the whole
+protocol can fail. In my opinion: the best way to implement this is to
+use non-blocking sockets with select for polling. This allows you to properly handle
+every connection state without impacting timing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="o">...</span> <span class="n">sel</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">selectors</span><span class="o">.</span><span class="n">EVENT_WRITE</span> <span class="o">|</span> <span class="n">selectors</span><span class="o">.</span><span class="n">EVENT_READ</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For punching: we simply call connect_ex on a (dest_ip, port) tuple with a 0.01 second sleep until an expiry (src_port == dest_port.) Actual punching here is not terribly elegant
+as you’re just spamming out SYNs. But this part needs to be aggressive enough to create a remote mapping but not so aggressive that it kills your CPU.
+I use a 0.01 second sleep for that.</p>
+</section>
+<section id="part-4-winner-selection">
+<h2>Part 4: winner selection<a class="headerlink" href="#part-4-winner-selection" title="Link to this heading"></a></h2>
+<p>In this algorithm multiple ports are used so many successful connections can be returned. The problem is how to choose the same connection? My approach is to start by having the sides choose a leader and follower. The leader has the greater WAN IP number. The leader sends a single character on a connection and cleanly closes the rest.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">winner</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;$&quot;</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">loser</span><span class="o">.</span><span class="n">shutdown</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SHUT_RDWR</span><span class="p">)</span>
+<span class="n">loser</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The follower then uses select to poll events. If it finds one it calls
+recv(1) to choose that connection (winner.) The reason a single char
+is used here is because TCP is stream-based. If the “success” delimiter was a word then
+the follower would have to implement a buffered-reader algorithm just to ensure they
+have everything (and I didn’t want that complexity.) A single char is atomic.</p>
+</section>
+<section id="part-5-putting-it-all-together">
+<h2>Part 5: putting it all together<a class="headerlink" href="#part-5-putting-it-all-together" title="Link to this heading"></a></h2>
+<p>I present to you: a simple TCP hole punching algorithm requiring only a dest IP to use.
+Since the protocol is deterministic no infrastructure is required for testing and
+there is no need for the hosts to exchange meta data to use it. The hosts may still use NTP for time which is probably recommended though optional (older OSes in VMs can’t maintain time well.)</p>
+<p>It is assumed another process will coordinate the running of this tool. Though you can easily
+run everything yourself on multiple terminals as long as the commands fall within the 10 second min_run_window. Here, punching applies for common routers using equal delta allocation.</p>
+<p><a class="reference download internal" download="" href="../_downloads/3ff8af7dd7b8df02dc52551b4bbaa7d1/tcp_punch.py"><code class="xref download docutils literal notranslate"><span class="pre">tcp_punch.py</span></code></a></p>
+<p>You can run tcp_punch.py 127.0.0.1 to get a feel for the code.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Cryptography" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Matthew Roberts.</p>
+  </div>
+
+  
+     
+    
+
+            
+    <div style="text-align: left; margin-top: 10px;">
+
+            <strong>Mirrors:</strong> 
+            <a href="https://robertsdotpm.github.io/">Github Pages</a> | 
+            <a href="https://robertsdotpm.readthedocs.io/">Read The Docs</a>
+
+    </div>
+    
+
+    
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
