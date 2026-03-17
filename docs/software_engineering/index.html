@@ -19,7 +19,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Offline computing" href="offline_computing.html" />
+    <link rel="next" title="Public access databases" href="public_databases.html" />
     <link rel="prev" title="Smart drugs are mostly bullshit" href="../personal/smart_drugs_are_mostly_bullshit.html" /> 
 </head>
 
@@ -51,16 +51,36 @@
 <li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#okay-but-what-about-better-drugs-r-right-guise">Okay, but what about “better” drugs? R-right guise?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-industry-is-built-on-vague-language">The industry is built on vague language</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-most-popular-supplements-barely-have-evidence">The most popular supplements barely have evidence</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#why-is-this-so-difficult">Why is this so difficult?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#simpler-ways-to-improve-cognition">Simpler ways to improve cognition</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#outro">Outro</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Software engineering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="public_databases.html">Public access databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#the-magic-of-image-boards">The magic of image boards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#distributed-hash-tables">Distributed hash tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#public-access-kvs">Public access KVS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#handling-capacity-limits">Handling capacity limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#putting-it-all-together">Putting it all together</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#future-work">Future work</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="offline_computing.html">Offline computing</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="offline_computing.html#benefits">Benefits</a></li>
 <li class="toctree-l3"><a class="reference internal" href="offline_computing.html#implication">Implication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cryptography/index.html">Cryptography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cryptography/tcp_hole_punching.html">A most elegant TCP hole punching algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-1-selecting-the-bucket">Part 1: selecting the bucket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-2-selecting-ports">Part 2: selecting ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-3-sockets-and-networking">Part 3: sockets and networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-4-winner-selection">Part 4: winner selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-5-putting-it-all-together">Part 5: putting it all together</a></li>
 </ul>
 </li>
 </ul>
@@ -95,6 +115,15 @@
 <h1>Software engineering<a class="headerlink" href="#software-engineering" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="public_databases.html">Public access databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="public_databases.html#the-magic-of-image-boards">The magic of image boards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_databases.html#distributed-hash-tables">Distributed hash tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_databases.html#public-access-kvs">Public access KVS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_databases.html#handling-capacity-limits">Handling capacity limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_databases.html#putting-it-all-together">Putting it all together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="public_databases.html#future-work">Future work</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="offline_computing.html">Offline computing</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="offline_computing.html#benefits">Benefits</a></li>
 <li class="toctree-l2"><a class="reference internal" href="offline_computing.html#implication">Implication</a></li>
@@ -109,7 +138,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../personal/smart_drugs_are_mostly_bullshit.html" class="btn btn-neutral float-left" title="Smart drugs are mostly bullshit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="offline_computing.html" class="btn btn-neutral float-right" title="Offline computing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="public_databases.html" class="btn btn-neutral float-right" title="Public access databases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

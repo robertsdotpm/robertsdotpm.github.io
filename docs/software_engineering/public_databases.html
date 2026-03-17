@@ -1,0 +1,264 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Public access databases &mdash; Aul Ma&#39;s research facility</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Offline computing" href="offline_computing.html" />
+    <link rel="prev" title="Software engineering" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Aul Ma's research facility
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../personal/index.html">Personal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html">Smart drugs are mostly bullshit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#does-anyone-want-some-cawffee">Does anyone want some cawffee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#pharma-is-complex">Pharma is complex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#why-am-i-talking-about-caffeine">Why am I talking about caffeine?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#okay-but-what-about-better-drugs-r-right-guise">Okay, but what about “better” drugs? R-right guise?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-industry-is-built-on-vague-language">The industry is built on vague language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-most-popular-supplements-barely-have-evidence">The most popular supplements barely have evidence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#simpler-ways-to-improve-cognition">Simpler ways to improve cognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#outro">Outro</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software engineering</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Public access databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-magic-of-image-boards">The magic of image boards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#distributed-hash-tables">Distributed hash tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#public-access-kvs">Public access KVS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-capacity-limits">Handling capacity limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#putting-it-all-together">Putting it all together</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#future-work">Future work</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="offline_computing.html">Offline computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="offline_computing.html#benefits">Benefits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="offline_computing.html#implication">Implication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cryptography/index.html">Cryptography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cryptography/tcp_hole_punching.html">A most elegant TCP hole punching algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-1-selecting-the-bucket">Part 1: selecting the bucket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-2-selecting-ports">Part 2: selecting ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-3-sockets-and-networking">Part 3: sockets and networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-4-winner-selection">Part 4: winner selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-5-putting-it-all-together">Part 5: putting it all together</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Aul Ma's research facility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Software engineering</a></li>
+      <li class="breadcrumb-item active">Public access databases</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/software_engineering/public_databases.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="public-access-databases">
+<h1>Public access databases<a class="headerlink" href="#public-access-databases" title="Link to this heading"></a></h1>
+<p>Most online systems require logins to prevent abuse, since anonymous access often leads to:</p>
+<ul class="simple">
+<li><p>email = spamming</p></li>
+<li><p>web hosting = malware</p></li>
+<li><p>IRC = botnet control</p></li>
+<li><p>pastebins = leaked credentials</p></li>
+<li><p>proxies = attacks</p></li>
+</ul>
+<p>Because resources cost money, systems usually lock access and bill usage. Still, some systems choose to buck this trend, and the results can be quite interesting.</p>
+<section id="the-magic-of-image-boards">
+<h2>The magic of image boards<a class="headerlink" href="#the-magic-of-image-boards" title="Link to this heading"></a></h2>
+<p>Image boards are a notable example of a successful anonymous system:</p>
+<ul class="simple">
+<li><p>Anyone can post without registration</p></li>
+<li><p>New threads appear first</p></li>
+<li><p>Replies move a thread back to the top</p></li>
+<li><p>Threads past a maximum limit are deleted</p></li>
+</ul>
+<p>Deleting threads beyond the active limit automatically removes problematic content, reducing moderator burden. As a site grows, old threads disappear faster, making moderation easier. This simple “bumping” strategy scales very well.</p>
+</section>
+<section id="distributed-hash-tables">
+<h2>Distributed hash tables<a class="headerlink" href="#distributed-hash-tables" title="Link to this heading"></a></h2>
+<p>Distributed hash tables (DHTs) resemble image boards in key ways:</p>
+<ul class="simple">
+<li><p>Anyone can store values without registration</p></li>
+<li><p>Popular values persist longer, while unpopular ones expire</p></li>
+<li><p>Persistence depends on node activity and data popularity; storage is not guaranteed</p></li>
+</ul>
+<p>DHTs are useful because programs can use them without captchas. However, guaranteeing persistence is difficult: node count, churn, and data popularity all affect lifespan, making DHTs unreliable for software that requires consistent information availability.</p>
+<p>A hybrid approach would combine the pruning properties of image boards with the openness of a DHT. This would allow any program to store key-value pairs that persist while setting an upper bound on resource usage through expiratory bumping. This would be interesting as very few
+public access storage systems for software exist on the Internet.</p>
+</section>
+<section id="public-access-kvs">
+<h2>Public access KVS<a class="headerlink" href="#public-access-kvs" title="Link to this heading"></a></h2>
+<p>A simple public access key-value store could function with the following rules:</p>
+<ul class="simple">
+<li><p>Anyone can store key-value pairs without registration</p></li>
+<li><p>There is a maximum number of key-values per IP</p></li>
+<li><p>The oldest last-updated key-value past the limit is removed</p></li>
+<li><p>Key-values can be updated to refresh their expiry and associated IP</p></li>
+</ul>
+<p>Keys are handled on a first-come, first-serve basis, with ownership tied to an ECDSA public key. The maximum number of allowed key-values per IP is based on the IP version. For IPv4, the address space is easy to accommodate. For IPv6, compromises are necessary:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">global_main_limit</span> <span class="p">(</span><span class="mi">32</span> <span class="n">bits</span><span class="p">)</span> <span class="o">--</span> <span class="n">over</span><span class="o">-</span><span class="n">allocated</span>
+<span class="n">global_extra_limit</span> <span class="p">(</span><span class="mi">16</span> <span class="n">bits</span><span class="p">)</span> <span class="o">--</span> <span class="n">over</span><span class="o">-</span><span class="n">allocated</span>
+        <span class="o">|</span>
+        <span class="o">|</span>
+        <span class="n">LAN_ID_limit</span> <span class="p">(</span><span class="mi">16</span> <span class="n">bits</span><span class="p">)</span> <span class="o">--</span> <span class="mi">15000</span>
+                <span class="o">|</span>
+                <span class="o">|</span>
+                <span class="n">interface_ID_limit</span> <span class="p">(</span><span class="mi">64</span> <span class="n">bits</span><span class="p">)</span> <span class="o">--</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>The global main and global extra portions form the root of the “tree.” The root may have LAN_ID_limit branches, each of which can have interface_ID_limit child branches. We do not try to reserve space for every value in the first 48 bits because there would be too many. Since keys expire, space is continually freed for new entries.</p>
+</section>
+<section id="handling-capacity-limits">
+<h2>Handling capacity limits<a class="headerlink" href="#handling-capacity-limits" title="Link to this heading"></a></h2>
+<p>Many Internet users have dynamic IPs, so key-values need to migrate from one IP to another. The challenge arises when an IP’s capacity is already full and the IPs owner changes. The new IP owner would otherwise inherit a fully used state.</p>
+<p>Allowing the new owner to bump old values could work, but IPs can change at any time. Without precautions, key-values could be deleted before the original owner has a chance to migrate them. The solution is to split IP capacity into two portions:</p>
+<ul class="simple">
+<li><p><strong>Portion A (protected zone):</strong> enforces a minimum lifespan, giving key-values time to migrate</p></li>
+<li><p><strong>Portion B (bumpable zone):</strong> no minimum lifespan; keys can be bumped once the limit is reached</p></li>
+</ul>
+<p>As space becomes available in Portion A, Portion B values are promoted to Portion A. This ensures new IP owners can write, while protecting key-values during IP churn.</p>
+</section>
+<section id="putting-it-all-together">
+<h2>Putting it all together<a class="headerlink" href="#putting-it-all-together" title="Link to this heading"></a></h2>
+<p>I’ve built a demo that implements everything except Portion B logic. It consists of a client anyone can use and I host the server. The package is available on PyPI.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># install: python3 -m pip install namebump</span>
+<span class="c1"># Note: I made the mistake of using timeouts too low so it</span>
+<span class="c1"># may time out if the network is slow. Will fix at a later date.</span>
+
+<span class="kn">import</span> <span class="nn">namebump</span>
+<span class="kn">import</span> <span class="nn">asyncio</span>
+
+<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Generate your public key</span>
+    <span class="n">kp</span> <span class="o">=</span> <span class="n">namebump</span><span class="o">.</span><span class="n">Keypair</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
+
+    <span class="c1"># Save a value at a unique name (must be unique)</span>
+    <span class="k">await</span> <span class="n">namebump</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;your unique name&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">kp</span><span class="p">)</span>
+
+    <span class="c1"># Retrieve the value</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="k">await</span> <span class="n">namebump</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;your unique name&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Delete the value</span>
+    <span class="k">await</span> <span class="n">namebump</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;your unique name&quot;</span><span class="p">,</span> <span class="n">kp</span><span class="p">)</span>
+
+<span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>You can find the project on <a class="reference external" href="https://github.com/robertsdotpm/namebump">GitHub</a>.</p>
+</section>
+<section id="future-work">
+<h2>Future work<a class="headerlink" href="#future-work" title="Link to this heading"></a></h2>
+<p>One may incentivise the preservation of resources by making Portion A expiry a function of usage. For example - less usage will grant higher expiry to values, dropping as
+capacity is used.</p>
+<p>I am sure there are better ways to structure this system. In general: the idea of
+public access computing seems unexplored because of the perceived difficulty in
+moderation and the human instinct to monetize everything. But this might not apply
+for all things.</p>
+<p>Maybe there are new public access systems to invent.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Software engineering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="offline_computing.html" class="btn btn-neutral float-right" title="Offline computing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Matthew Roberts.</p>
+  </div>
+
+  
+     
+    
+
+            
+    <div style="text-align: left; margin-top: 10px;">
+
+            <strong>Mirrors:</strong> 
+            <a href="https://robertsdotpm.github.io/">Github Pages</a> | 
+            <a href="https://robertsdotpm.readthedocs.io/">Read The Docs</a>
+
+    </div>
+    
+
+    
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
