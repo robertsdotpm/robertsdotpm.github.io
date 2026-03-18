@@ -41,8 +41,8 @@ Small ad-hoc tasks can also be encoded in filenames:
 
 Each file does its job immediately. Rename to perform a new task. Share it. No setup, no instructions. Everything is self-contained in the name.
 
-Example 4: Self-contained VPN tunnels
---------------------------------------
+Example 4: P2P VPN tunnels
+-------------------------------
 
 VPNs between friends are usually tricky to set up. Imagine:
 
@@ -54,7 +54,7 @@ VPNs between friends are usually tricky to set up. Imagine:
 - Third part: ports to open.  
 - Optional: description.  
 
-Run the file, and the tunnel is up. Rename for new endpoints or ports. **Send to a friend, run, game on.** No config, no editing, zero friction.
+Run the file to open one side of the tunnel. Rename for new endpoints or ports. **Send to a friend, they open their side, tunnel is connected, game on.** No config, no editing, zero friction.
 
 Closing thoughts
 ----------------
