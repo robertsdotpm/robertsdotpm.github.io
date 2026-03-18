@@ -1,0 +1,217 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forget Flags and Scripts: Just Rename the File &mdash; Aul Ma&#39;s research facility</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Public access databases" href="public_databases.html" />
+    <link rel="prev" title="Software engineering" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Aul Ma's research facility
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../personal/index.html">Personal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html">Smart drugs are mostly bullshit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#does-anyone-want-some-cawffee">Does anyone want some cawffee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#pharma-is-complex">Pharma is complex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#why-am-i-talking-about-caffeine">Why am I talking about caffeine?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#okay-but-what-about-better-drugs-r-right-guise">Okay, but what about “better” drugs? R-right guise?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-industry-is-built-on-vague-language">The industry is built on vague language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-most-popular-supplements-barely-have-evidence">The most popular supplements barely have evidence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#simpler-ways-to-improve-cognition">Simpler ways to improve cognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#outro">Outro</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software engineering</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Forget Flags and Scripts: Just Rename the File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-not-just-flags-or-scripts">Why not just flags or scripts?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-1-reusable-installers">Example 1: Reusable installers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-2-ai-experiment-runners">Example 2: AI experiment runners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-3-ephemeral-utilities">Example 3: Ephemeral utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-4-self-contained-vpn-tunnels">Example 4: Self-contained VPN tunnels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#closing-thoughts">Closing thoughts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="public_databases.html">Public access databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#the-magic-of-image-boards">The magic of image boards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#distributed-hash-tables">Distributed hash tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#public-access-kvs">Public access KVS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#handling-capacity-limits">Handling capacity limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#putting-it-all-together">Putting it all together</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#future-work">Future work</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="offline_computing.html">Offline computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="offline_computing.html#benefits">Benefits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="offline_computing.html#implication">Implication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cryptography/index.html">Cryptography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cryptography/tcp_hole_punching.html">A most elegant TCP hole punching algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-1-selecting-the-bucket">Part 1: selecting the bucket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-2-selecting-ports">Part 2: selecting ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-3-sockets-and-networking">Part 3: sockets and networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-4-winner-selection">Part 4: winner selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-5-putting-it-all-together">Part 5: putting it all together</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Aul Ma's research facility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Software engineering</a></li>
+      <li class="breadcrumb-item active">Forget Flags and Scripts: Just Rename the File</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/software_engineering/program_names_as_input.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="forget-flags-and-scripts-just-rename-the-file">
+<h1>Forget Flags and Scripts: Just Rename the File<a class="headerlink" href="#forget-flags-and-scripts-just-rename-the-file" title="Link to this heading"></a></h1>
+<p>Programs usually get input from flags or scripts. But there’s another way: a program can read its <strong>own filename</strong>. That means the <strong>entire configuration can live in the file name itself</strong>, making programs self-contained, portable, and instantly shareable.</p>
+<section id="why-not-just-flags-or-scripts">
+<h2>Why not just flags or scripts?<a class="headerlink" href="#why-not-just-flags-or-scripts" title="Link to this heading"></a></h2>
+<p>Flags are ephemeral – you have to share the command line or wrap it in a script. Scripts depend on environment, which can break portability. Filenames solve both: the program describes itself, requires zero setup, and any configuration can be shared by simply renaming the file.</p>
+</section>
+<section id="example-1-reusable-installers">
+<h2>Example 1: Reusable installers<a class="headerlink" href="#example-1-reusable-installers" title="Link to this heading"></a></h2>
+<p>Imagine <code class="docutils literal notranslate"><span class="pre">install_PY3_MODULE_NAME.exe</span></code>. It reads the filename, extracts the Python module name, downloads dependencies, sets up Python if needed, and creates a launcher. <strong>Rename it</strong>, and you have a new installer for a different project. Icons, mirrors, or other metadata can also live in the file as resources – all self-contained, all shareable.</p>
+<p>See my exploration: <a class="reference external" href="https://github.com/robertsdotpm/win-auto-py3">here</a></p>
+</section>
+<section id="example-2-ai-experiment-runners">
+<h2>Example 2: AI experiment runners<a class="headerlink" href="#example-2-ai-experiment-runners" title="Link to this heading"></a></h2>
+<p>ML experiments usually require scripts, configs, and data setup. Imagine a single executable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="o">---</span><span class="n">resnet50</span><span class="o">---</span><span class="n">lr0</span><span class="mf">.001</span><span class="o">---</span><span class="n">batch32</span><span class="o">---</span><span class="n">cifar10</span><span class="o">.</span><span class="n">exe</span>
+</pre></div>
+</div>
+<p>It parses its filename, downloads datasets, sets hyperparameters, installs dependencies, and runs automatically. Rename it for a new model, dataset, or parameters.</p>
+<p><strong>Share the file, reproduce instantly.</strong></p>
+</section>
+<section id="example-3-ephemeral-utilities">
+<h2>Example 3: Ephemeral utilities<a class="headerlink" href="#example-3-ephemeral-utilities" title="Link to this heading"></a></h2>
+<p>Small ad-hoc tasks can also be encoded in filenames:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">compress</span><span class="o">---</span><span class="n">photos</span><span class="o">---</span><span class="n">high</span><span class="o">.</span><span class="n">exe</span>
+<span class="n">backup</span><span class="o">---</span><span class="n">home</span><span class="o">---</span><span class="n">encrypt</span><span class="o">-</span><span class="n">aes256</span><span class="o">.</span><span class="n">exe</span>
+<span class="n">fetch</span><span class="o">---</span><span class="n">api</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">---</span><span class="n">repos</span><span class="o">/</span><span class="n">owner</span><span class="o">/</span><span class="n">project</span><span class="o">---</span><span class="n">q</span><span class="o">=</span><span class="n">stars</span><span class="o">&gt;</span><span class="mi">100</span><span class="o">---</span><span class="n">o</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">exe</span>
+</pre></div>
+</div>
+<p>Each file does its job immediately. Rename to perform a new task. Share it. No setup, no instructions. Everything is self-contained in the name.</p>
+</section>
+<section id="example-4-self-contained-vpn-tunnels">
+<h2>Example 4: Self-contained VPN tunnels<a class="headerlink" href="#example-4-self-contained-vpn-tunnels" title="Link to this heading"></a></h2>
+<p>VPNs between friends are usually tricky to set up. Imagine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lounge</span><span class="o">-</span><span class="n">room</span><span class="o">---</span><span class="n">friends</span><span class="o">-</span><span class="n">machine</span><span class="o">---</span><span class="n">t25565</span><span class="o">---</span><span class="n">minecraft</span><span class="o">.</span><span class="n">exe</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>First two parts: machine names, automatically registered with a server using ECDSA keys.</p></li>
+<li><p>Third part: ports to open.</p></li>
+<li><p>Optional: description.</p></li>
+</ul>
+<p>Run the file, and the tunnel is up. Rename for new endpoints or ports. <strong>Send to a friend, run, game on.</strong> No config, no editing, zero friction.</p>
+</section>
+<section id="closing-thoughts">
+<h2>Closing thoughts<a class="headerlink" href="#closing-thoughts" title="Link to this heading"></a></h2>
+<p>This approach collapses configuration, portability, and reproducibility into a single artifact. It challenges conventional assumptions: using filenames as the interface. For installers, AI experiments, utilities, or even VPNs, <strong>renaming the file is all it takes to change behavior</strong>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Software engineering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="public_databases.html" class="btn btn-neutral float-right" title="Public access databases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Matthew Roberts.</p>
+  </div>
+
+  
+     
+    
+
+            
+    <div style="text-align: left; margin-top: 10px;">
+
+            <strong>Mirrors:</strong> 
+            <a href="https://robertsdotpm.github.io/">Github Pages</a> | 
+            <a href="https://robertsdotpm.readthedocs.io/">Read The Docs</a>
+
+    </div>
+    
+
+    
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
