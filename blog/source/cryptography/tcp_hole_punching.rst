@@ -1,6 +1,12 @@
 A most elegant TCP hole punching algorithm
 ============================================
 
+.. CAUTION::
+   The algorithm in this post needs "double buckets" to be reliable.
+   Otherwise, the two sides can split on bucket boundaries and fail to converge.
+   If the first bucket fails, compute an additional bucket step for convergence.
+   My algorithm trades slow startup for less infrastructure.
+
 TCP hole punching is a way to connect two computers behind NAT routers. The
 technique has a lot of requirements to work.
 

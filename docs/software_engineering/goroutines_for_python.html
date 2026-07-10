@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Goroutines for Python &mdash; Aul Ma&#39;s research facility</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_collapse.css?v=226d88b4" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Forget Flags and Scripts: Just Rename the File" href="program_names_as_input.html" />
+    <link rel="prev" title="Software engineering" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Aul Ma's research facility
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../personal/index.html">Personal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html">Smart drugs are mostly bullshit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#does-anyone-want-some-cawffee">Does anyone want some cawffee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#pharma-is-complex">Pharma is complex</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#why-am-i-talking-about-caffeine">Why am I talking about caffeine?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#okay-but-what-about-better-drugs-r-right-guise">Okay, but what about “better” drugs? R-right guise?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-industry-is-built-on-vague-language">The industry is built on vague language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#the-most-popular-supplements-barely-have-evidence">The most popular supplements barely have evidence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#simpler-ways-to-improve-cognition">Simpler ways to improve cognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../personal/smart_drugs_are_mostly_bullshit.html#outro">Outro</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Software engineering</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Goroutines for Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#where-python-networking-struggles">Where Python networking struggles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-threads-don-t-solve-blocking">Why threads don’t solve blocking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-go-fixes-networking">How Go fixes networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-goroutines-to-python">Adding goroutines to Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-details">Technical details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-process">Testing process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#future-research">Future research</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="program_names_as_input.html">Forget Flags and Scripts: Just Rename the File</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#why-not-just-flags-or-scripts">Why not just flags or scripts?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#example-1-reusable-installers">Example 1: Reusable installers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#example-2-ai-experiment-runners">Example 2: AI experiment runners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#example-3-ephemeral-utilities">Example 3: Ephemeral utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#example-4-p2p-vpn-tunnels">Example 4: P2P VPN tunnels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#closing-thoughts">Closing thoughts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="public_databases.html">Public access databases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#the-magic-of-image-boards">The magic of image boards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#distributed-hash-tables">Distributed hash tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#public-access-kvs">Public access KVS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#handling-capacity-limits">Handling capacity limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#putting-it-all-together">Putting it all together</a></li>
+<li class="toctree-l3"><a class="reference internal" href="public_databases.html#future-work">Future work</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="offline_computing.html">Offline computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="offline_computing.html#benefits">Benefits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="offline_computing.html#implication">Implication</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cryptography/index.html">Cryptography</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cryptography/tcp_hole_punching.html">A most elegant TCP hole punching algorithm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-1-selecting-the-bucket">Part 1: selecting the bucket</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-2-selecting-ports">Part 2: selecting ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-3-sockets-and-networking">Part 3: sockets and networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-4-winner-selection">Part 4: winner selection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cryptography/tcp_hole_punching.html#part-5-putting-it-all-together">Part 5: putting it all together</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Aul Ma's research facility</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Software engineering</a></li>
+      <li class="breadcrumb-item active">Goroutines for Python</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/software_engineering/goroutines_for_python.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="goroutines-for-python">
+<h1>Goroutines for Python<a class="headerlink" href="#goroutines-for-python" title="Link to this heading"></a></h1>
+<p>Networked software often ends up written in Go for one simple reason: <strong>goroutines.</strong> They are tiny, fast, and cheap enough to run by the millions.</p>
+<p>So where does that leave Python?</p>
+<section id="where-python-networking-struggles">
+<h2>Where Python networking struggles<a class="headerlink" href="#where-python-networking-struggles" title="Link to this heading"></a></h2>
+<p>Python has good networking libraries, but its dominant concurrency model is <strong>asyncio.</strong> Inside one event loop, tasks take turns running cooperatively.</p>
+<p>Think of it like a restaurant with one line. Customers order, sit down, and get their food when it’s ready. It works great – until one customer holds up the waiter.</p>
+<p>In asyncio terms, that is a coroutine that does not yield. It might be busy rendering JSON, or sitting inside a C extension that takes too long. Python’s usual guidance is: <strong>“move the blocking work to a thread.”</strong> But that opens a different set of problems.</p>
+</section>
+<section id="why-threads-don-t-solve-blocking">
+<h2>Why threads don’t solve blocking<a class="headerlink" href="#why-threads-don-t-solve-blocking" title="Link to this heading"></a></h2>
+<p>Introducing threads sounds like a solution, but it does not fully fix the model. This is because:</p>
+<ol class="arabic simple">
+<li><p>One bad coroutine can still stall the event loop it is running on.</p></li>
+<li><p>Code that mixes async and threads can introduce new deadlocks.</p></li>
+<li><p>Even when nothing blocks, one event loop still only runs <strong>one thing at a time.</strong></p></li>
+</ol>
+<p>The major flaw is not that Python cannot do networking. It is that Python’s async model expects developers to manually avoid every stall. That makes high-performance async code much easier to get wrong than it looks.</p>
+</section>
+<section id="how-go-fixes-networking">
+<h2>How Go fixes networking<a class="headerlink" href="#how-go-fixes-networking" title="Link to this heading"></a></h2>
+<p>Unlike classic CPython, Go was designed to spread work across multiple OS threads. But it does not just throw goroutines onto threads and hope for the best. It has a runtime scheduler that manages lightweight queues of runnable work.</p>
+<p>That scheduler is the important part. When a goroutine waits on I/O, Go can usually park it and keep the rest of the system moving. If one worker runs out of work, it can steal work from another.</p>
+<p>So the model is not “one loop, don’t block it.” The model is lightweight tasks, real parallelism, and a runtime that can rebalance work automatically.</p>
+</section>
+<section id="adding-goroutines-to-python">
+<h2>Adding goroutines to Python<a class="headerlink" href="#adding-goroutines-to-python" title="Link to this heading"></a></h2>
+<p>Python has extensions, so I wondered if an AI could build a Go-style fiber runtime. A runtime that could use multiple cores and work-steal fibers across cores, like Go can.</p>
+<p>Part of the appeal was testing the hype. Depending on who you ask, AI either produces unmaintainable slop or can rewrite millions of lines of code perfectly.</p>
+<p>So I designed the architecture, trade-offs, and testing strategy. Claude wrote the runtime implementation. This is the result: <strong>an extension on par with Go for regular network handlers, and still close to Go for CPU-bound work with compiled handlers.</strong></p>
+<p><strong>Free-threaded CPython 3.13t+ with custom extension, state-of-the-art:</strong></p>
+<ul class="simple">
+<li><p><strong>Echo req/s:</strong> loadgen-bound; on par with Go in this benchmark (epoll; ~638,000 / s.)</p></li>
+<li><p><strong>Connection churn:</strong> on par with Go, similar CPU usage. (~77,000 / s)</p></li>
+<li><p><strong>Fiber spawn:</strong> 1.35m / s vs Go’s 2.1m / s (Cython is 2.29m / s)</p></li>
+<li><p><strong>Regular handlers:</strong> on par with Go for non-CPU-bound network work.</p></li>
+<li><p><strong>CPU-bound handlers:</strong> Cython handlers within 8% of Go; pure Python is ~180x slower.</p></li>
+<li><p><strong>Memory:</strong> 8.8 KB vs 2.7 KB, empty fiber (Cython is 4.7 KB)</p></li>
+</ul>
+<p>I’ve done my best to squash bugs – but I don’t want to oversell this. The software has over 30k lines of C implementing exotic concurrency algorithms. It will have bugs I haven’t found yet. <strong>Consider this extension experimental and subject to change.</strong></p>
+<p>As for OS support: you can expect the software to work best on Linux, because it has had the most testing there. Other platforms are supported, though they do not have wheel builds yet.</p>
+<p>The <a class="reference external" href="https://github.com/robertsdotpm/runloom">GitHub repo is here</a> if you want to try it, and the <a class="reference external" href="../_static/runloom_benchmark.html">benchmarks are here</a>.</p>
+</section>
+<hr class="docutils" />
+<section id="technical-details">
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Link to this heading"></a></h2>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="ee3eb88d-9531-401c-ba58-cd17297cb97f" name="ee3eb88d-9531-401c-ba58-cd17297cb97f" type="checkbox"><label class="sphinx_collapse__label" for="ee3eb88d-9531-401c-ba58-cd17297cb97f"><i class="sphinx_collapse__icon"></i>Click to see technical details.</label><div class="sphinx_collapse__content docutils container">
+<p>Runloom targets free-threaded CPython 3.13t+. It runs many stackful fibers across real OS threads called hubs. Each fiber has its own C stack and switches with an fcontext assembly swap, which means it can suspend inside code that looks blocking.</p>
+<p>The trade-off is memory. Fibers need stacks, so Runloom starts each one with a safe 512 KiB default and resizes it based on actual use. Shallow stacks shrink toward what they really need. Growth happens by copying at yield boundaries, with guard pages catching overflow before it becomes memory corruption. The reservation is not the cost: <strong>only touched stack pages count as real memory</strong>, so even a huge declared stack only pays for what it uses.</p>
+<p>With the fiber itself handled, the next piece is where it runs. Fibers are assigned to hubs, and each hub has its own scheduler loop. New fibers enter a Chase-Lev work-stealing deque, while woken fibers go into a local FIFO queue. Idle hubs can steal fresh work from other hubs, but once a fiber has started running, the default scheduler pins it to its hub. Each hub also owns its counters, sleep state, and epoll/kqueue poller; socket blocking goes through netpoll.</p>
+<p>The ugly part is CPython’s thread-affine internals: PyThreadState, biased ref counting, mimalloc state, critical sections, and stop-the-world GC. By default, Runloom keeps one PyThreadState per hub and snapshots each fiber’s slice of state during switches. That is memory-cheap and works on stock Python, but it means an <strong>already-ran fiber cannot truly migrate across hubs.</strong></p>
+<p>My optional <a class="reference external" href="https://github.com/robertsdotpm/runloom/blob/main/src/patches/cpython313t-tstate-alloc-home.patch">CPython patch</a> allows true, “already-run” work-stealing with one <code class="docutils literal notranslate"><span class="pre">_alloc_home</span></code> pointer. It works by separating interpreter state from allocator ownership. If you think that’s a good idea, here’s where I <a class="reference external" href="https://discuss.python.org/t/migratable-execution-contexts-for-free-threading-a-tiny-allocation-home-hook-pre-pep-seeking-feedback-a-sponsor/107860">pitched the patch on the Python discussion forums</a>.</p>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="testing-process">
+<h2>Testing process<a class="headerlink" href="#testing-process" title="Link to this heading"></a></h2>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="0841b557-99d9-4b66-b95d-7d5b00ce5a61" name="0841b557-99d9-4b66-b95d-7d5b00ce5a61" type="checkbox"><label class="sphinx_collapse__label" for="0841b557-99d9-4b66-b95d-7d5b00ce5a61"><i class="sphinx_collapse__icon"></i>A nice, boring section on testing:</label><div class="sphinx_collapse__content docutils container">
+<p>My main rule for this project was: I would not hand-write the runtime implementation. But my opinion on vibe coding is very low. Any work that the AI does, I can’t trust. The question then becomes: “how do you build reliable software in a situation like this?” I think Python has a good answer to this already.</p>
+<p><strong>“If it looks like a duck, and quacks like a duck, then it’s a duck.”</strong></p>
+<p>The software reliability equivalent of this for a stackful fiber runtime is:</p>
+<ol class="arabic simple">
+<li><p>Do its performance metrics match up to similar systems?</p></li>
+<li><p>What about resource usage?</p></li>
+<li><p>Is it stable over time?</p></li>
+<li><p>Can it be used in the claimed capacity?</p></li>
+</ol>
+<p>Some of this is manual. You have to measure different variables. Are they as expected? Some of this can be automated: fuzzing, deterministic simulation testing, and so on. It would fill another post to list everything done to test this software, so I’ll list the highest payoffs.</p>
+<ul class="simple">
+<li><p>A suite of programs was designed to stress test concurrency, threading, mutexes, and other behavior that matters for a stackful runtime. Most of these programs were able to run at a million fibers each. They exposed the most bugs over every other technique.</p></li>
+<li><p>A bridge for pre-existing asyncio programs allows code to run unmodified. The 100 most popular open source projects test suites were ran through this bridge and any bugs in the runtime were fixed.</p></li>
+<li><p>Custom tooling was designed to hunt for hangs in the scheduler. It consists mostly of fuzzing and often found rare hangs.</p></li>
+<li><p>Open source tests from Python, Linux, Go, and many other projects were ported.</p></li>
+<li><p>The entire scheduler, including I/O, can be fuzzed using fixed seeds. This helps simulate years worth of real usage across the program. The seed makes errors replayable for debugging.</p></li>
+</ul>
+<p>The testing process also found bugs outside of Runloom. Some of the stress programs exposed issues not just in this runtime but at the CPython boundary too.</p>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="future-research">
+<h2>Future research<a class="headerlink" href="#future-research" title="Link to this heading"></a></h2>
+<div class="sphinx_collapse docutils container">
+<input class="sphinx_collapse__input" id="04488054-a077-48b3-a920-311d59ed353e" name="04488054-a077-48b3-a920-311d59ed353e" type="checkbox"><label class="sphinx_collapse__label" for="04488054-a077-48b3-a920-311d59ed353e"><i class="sphinx_collapse__icon"></i>Still want more? How about this:</label><div class="sphinx_collapse__content docutils container">
+<ol class="arabic simple">
+<li><p>Dynamic recompilation of C extensions. If memory-touching instructions could be rewritten to track stack usage directly, fibers would not need the same guard-page overhead. That could take a couple of KB off every fiber. In the best case, Cython handlers could get much closer to Go’s memory profile.</p></li>
+<li><p>Python can be compiled to make it faster, but most ways to do that are still hard to use. Better tooling here would attack the same problem from the other side: keep Python’s ergonomics, but make the hot path cheap enough that the runtime is not always waiting on the language.</p></li>
+</ol>
+<p>The open question is whether Python can get cheap stackful execution without needing quite so much machinery outside the interpreter.</p>
+</div>
+</div>
+<hr class="docutils" />
+<p>I’m currently looking for work. So if you find my work interesting shoot me an email at <a class="reference external" href="mailto:matthew&#37;&#52;&#48;roberts&#46;pm">matthew<span>&#64;</span>roberts<span>&#46;</span>pm</a>. Thanks for reading this long page. Cheers.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Software engineering" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="program_names_as_input.html" class="btn btn-neutral float-right" title="Forget Flags and Scripts: Just Rename the File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Matthew Roberts.</p>
+  </div>
+
+  
+     
+    
+
+            
+    <div style="text-align: left; margin-top: 10px;">
+
+            <strong>Mirrors:</strong> 
+            <a href="https://robertsdotpm.github.io/">Github Pages</a> | 
+            <a href="https://robertsdotpm.readthedocs.io/">Read The Docs</a>
+
+    </div>
+    
+
+    
+
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

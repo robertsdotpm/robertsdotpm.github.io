@@ -7,8 +7,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Software engineering &mdash; Aul Ma&#39;s research facility</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_collapse.css?v=226d88b4" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -19,7 +20,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Forget Flags and Scripts: Just Rename the File" href="program_names_as_input.html" />
+    <link rel="next" title="Goroutines for Python" href="goroutines_for_python.html" />
     <link rel="prev" title="Smart drugs are mostly bullshit" href="../personal/smart_drugs_are_mostly_bullshit.html" /> 
 </head>
 
@@ -58,6 +59,16 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Software engineering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="goroutines_for_python.html">Goroutines for Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#where-python-networking-struggles">Where Python networking struggles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#why-threads-don-t-solve-blocking">Why threads don’t solve blocking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#how-go-fixes-networking">How Go fixes networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#adding-goroutines-to-python">Adding goroutines to Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#technical-details">Technical details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#testing-process">Testing process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#future-research">Future research</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="program_names_as_input.html">Forget Flags and Scripts: Just Rename the File</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#why-not-just-flags-or-scripts">Why not just flags or scripts?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#example-1-reusable-installers">Example 1: Reusable installers</a></li>
@@ -124,6 +135,16 @@
 <h1>Software engineering<a class="headerlink" href="#software-engineering" title="Link to this heading"></a></h1>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="goroutines_for_python.html">Goroutines for Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="goroutines_for_python.html#where-python-networking-struggles">Where Python networking struggles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goroutines_for_python.html#why-threads-don-t-solve-blocking">Why threads don’t solve blocking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goroutines_for_python.html#how-go-fixes-networking">How Go fixes networking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goroutines_for_python.html#adding-goroutines-to-python">Adding goroutines to Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goroutines_for_python.html#technical-details">Technical details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goroutines_for_python.html#testing-process">Testing process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="goroutines_for_python.html#future-research">Future research</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="program_names_as_input.html">Forget Flags and Scripts: Just Rename the File</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="program_names_as_input.html#why-not-just-flags-or-scripts">Why not just flags or scripts?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="program_names_as_input.html#example-1-reusable-installers">Example 1: Reusable installers</a></li>
@@ -156,7 +177,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../personal/smart_drugs_are_mostly_bullshit.html" class="btn btn-neutral float-left" title="Smart drugs are mostly bullshit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="program_names_as_input.html" class="btn btn-neutral float-right" title="Forget Flags and Scripts: Just Rename the File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="goroutines_for_python.html" class="btn btn-neutral float-right" title="Goroutines for Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

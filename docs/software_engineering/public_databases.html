@@ -7,8 +7,9 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Public access databases &mdash; Aul Ma&#39;s research facility</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_collapse.css?v=226d88b4" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
@@ -58,6 +59,16 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Software engineering</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="goroutines_for_python.html">Goroutines for Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#where-python-networking-struggles">Where Python networking struggles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#why-threads-don-t-solve-blocking">Why threads don’t solve blocking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#how-go-fixes-networking">How Go fixes networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#adding-goroutines-to-python">Adding goroutines to Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#technical-details">Technical details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#testing-process">Testing process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="goroutines_for_python.html#future-research">Future research</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="program_names_as_input.html">Forget Flags and Scripts: Just Rename the File</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#why-not-just-flags-or-scripts">Why not just flags or scripts?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="program_names_as_input.html#example-1-reusable-installers">Example 1: Reusable installers</a></li>
@@ -194,10 +205,10 @@ public access storage systems for software exist on the Internet.</p>
 <span class="c1"># Note: I made the mistake of using timeouts too low so it</span>
 <span class="c1"># may time out if the network is slow. Will fix at a later date.</span>
 
-<span class="kn">import</span> <span class="nn">namebump</span>
-<span class="kn">import</span> <span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">namebump</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># Generate your public key</span>
     <span class="n">kp</span> <span class="o">=</span> <span class="n">namebump</span><span class="o">.</span><span class="n">Keypair</span><span class="o">.</span><span class="n">generate</span><span class="p">()</span>
 
